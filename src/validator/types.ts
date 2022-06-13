@@ -7,3 +7,13 @@ export interface ValidationOption {
 export type ValidationMap = {
   [key in ValidationType]: () => ValidationOption;
 };
+
+export interface FormConstructor {
+  validationType: ValidationType;
+  maxLength: number;
+  invalidMessage?: string;
+}
+
+export interface FormConstructorRequired extends FormConstructor {
+  requiredMessage: string;
+}

@@ -3,15 +3,18 @@
     "@babel/typescript"
     ],
   "plugins": [
-    [
-      "module-resolver",
-      {
-        "alias": {
-          "@": "./src"
-        }
+    ["module-resolver", {
+      "alias": {
+        "@": "./src"
       }
-    ],
+    }],
     "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread"
-  ]
+    "@babel/proposal-object-rest-spread",
+    ["module-extension-resolver", {
+      "srcExtensions": [".js", ".cjs", ".mjs", ".es", ".es6", ".ts", ".node", ".json"],
+      "dstExtension": ".js",
+      "extensionsToKeep": [".json"]
+    }]
+  ],
+  "ignore": ["*.js", "js/"]
 }

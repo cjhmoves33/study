@@ -1,48 +1,72 @@
 // types
-import { ValidationType, ValidationOption } from '@/validator/types';
+import {
+  ValidationType,
+  ValidationOption,
+  FormConstructor,
+} from '@/validator/types';
 // modules
-import { getValidationMap, getRef } from '@/validator/module.js';
+import {
+  getValidationMap,
+  getInputRef,
+  getInvalidMessageRef,
+} from '@/validator/module';
 
 export default class FormValidator {
-  // constructors
-  private readonly type: ValidationType;
+  // ************* constructors *************
+  private readonly validationType: ValidationType;
   private readonly maxLength: number;
+  private readonly invalidMessage?: string;
+
   private readonly validationOption: ValidationOption;
   private readonly inputRef: HTMLInputElement;
+  private readonly invalidMessageRef: HTMLSpanElement;
 
-  // states
+  // ************* states *************
   private inputValue = '';
 
-  constructor(type: ValidationType, maxLength: number) {
-    this.type = type;
+  // ************* constructor *************
+  constructor({ validationType, maxLength, invalidMessage }: FormConstructor) {
+    this.validationType = validationType;
     this.maxLength = maxLength;
-    this.inputRef = getRef(type);
-    this.validationOption = getValidationMap(type, maxLength);
+    this.invalidMessage = invalidMessage;
+    this.inputRef = getInputRef(validationType);
+    this.invalidMessageRef = getInvalidMessageRef(validationType);
+    this.validationOption = getValidationMap(validationType, maxLength);
   }
 
+  // ************* methods *************
   private isInvalidValue(value: string) {
-    return value.match(this.validationOption.regexp);
+    return this.validationOption.regexp.test(value);
   }
 
-  private reportValidity(invalidMessage = '') {
-    this.inputRef.setCustomValidity(invalidMessage);
-    this.inputRef.reportValidity();
+  private throwInvalidMessage(invalidMessage: string) {
+    this.invalidMessageRef.innerText = invalidMessage;
   }
 
-  private set validValue(value: string) {
+  private hideInvalidMessage() {
+    this.invalidMessageRef.innerText = '';
+  }
+
+  private reportValidity(value: string, invalidMessage = '') {
+    this.hideInvalidMessage();
+
     if (this.isInvalidValue(value)) {
-      this.reportValidity('입력 확인 하셈.');
-    } else {
-      this.reportValidity();
+      this.throwInvalidMessage(invalidMessage);
     }
-
-    this.inputValue = value.replace(this.validationOption.regexp, '');
   }
 
+  // ************* Getter / Setter *************
   private get validValue() {
     return this.inputValue;
   }
 
+  private set validValue(value: string) {
+    this.reportValidity(value, this.invalidMessage);
+
+    this.inputValue = value.replace(this.validationOption.regexp, '');
+  }
+
+  // ************* apis *************
   public getValidValue(value: string) {
     this.validValue = value;
     return this.validValue;

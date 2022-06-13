@@ -25,8 +25,14 @@ export const getValidationMap = (type: ValidationType, maxLength: number) => {
   return validationMap[type]();
 };
 
-export const getRef = (type: ValidationType) => {
+export const getInputRef = (type: ValidationType) => {
   return document.querySelector(
     `input[type=text][name=${type}]`
   ) as HTMLInputElement;
+};
+
+export const getInvalidMessageRef = (type: ValidationType) => {
+  return document.querySelector(
+    `span[id=invalid-message-${type}]`
+  ) as HTMLSpanElement;
 };
