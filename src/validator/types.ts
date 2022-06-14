@@ -8,12 +8,13 @@ export type ValidationMap = {
   [key in ValidationType]: () => ValidationOption;
 };
 
-export interface FormConstructor {
+export interface InputConstructor {
   validationType: ValidationType;
   maxLength: number;
   invalidMessage?: string;
 }
 
-export interface FormConstructorRequired extends FormConstructor {
+export interface InputConstructorRequired extends InputConstructor {
   requiredMessage: string;
+  ref: HTMLElement;
 }
