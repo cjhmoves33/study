@@ -13,17 +13,22 @@ class App {
       'input[type=text][name=username]'
     ) as HTMLInputElement;
 
+    const usernameInvalidNotice = document.querySelector(
+      'span[id=username-invalid-notice]'
+    ) as HTMLSpanElement;
+
     const usernameValidator = new InputValidatorRequired({
       validationType: 'username',
       maxLength: 8,
-      invalidMessage: '한글, 영문, 숫자만 입력가능합니다',
+      inputRef: username,
+      invalidNotice: '한글, 영문, 숫자만 입력가능합니다',
+      invalidNoticeRef: usernameInvalidNotice,
       requiredMessage: '이름을 입력하세요',
-      ref: username,
     });
 
     username.oninput = e => {
       const target = e.target as HTMLInputElement;
-      target.value = usernameValidator.getValidValue(target.value);
+      usernameValidator.setValidValue(target.value);
       usernameValidator.reportValidity();
     };
 

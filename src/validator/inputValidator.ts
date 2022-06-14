@@ -1,21 +1,29 @@
 // types
-import { ValidationOption, InputConstructor } from '@/validator/types';
+import { InputConstructor } from '@/validator/types';
 // modules
-import { getValidationMap, getInvalidMessageRef } from '@/validator/module';
+import { getValidationMap } from '@/validator/module';
 
 export default class InputValidator {
   // ************* constructors *************
-  private readonly invalidMessage?: string;
-  private readonly invalidMessageRef: HTMLSpanElement;
-  private readonly validationOption: ValidationOption;
+  private readonly inputRef;
+  private readonly invalidNotice;
+  private readonly invalidNoticeRef;
+  private readonly validationOption;
 
   // ************* states *************
   private inputValue = '';
 
   // ************* constructor *************
-  constructor({ validationType, maxLength, invalidMessage }: InputConstructor) {
-    this.invalidMessage = invalidMessage;
-    this.invalidMessageRef = getInvalidMessageRef(validationType);
+  constructor({
+    validationType,
+    maxLength,
+    inputRef,
+    invalidNotice,
+    invalidNoticeRef,
+  }: InputConstructor) {
+    this.inputRef = inputRef;
+    this.invalidNotice = invalidNotice;
+    this.invalidNoticeRef = invalidNoticeRef;
     this.validationOption = getValidationMap(validationType, maxLength);
   }
 
@@ -24,27 +32,30 @@ export default class InputValidator {
     return this.validationOption.regexp.test(value);
   }
 
-  private throwInvalidMessage(invalidMessage: string) {
-    this.invalidMessageRef.innerText = invalidMessage;
+  private throwInvalidNotice(invalidNotice: string) {
+    if (!this.invalidNoticeRef) return;
+    this.invalidNoticeRef.innerText = invalidNotice;
   }
 
-  private hideInvalidMessage() {
-    this.invalidMessageRef.innerText = '';
+  private hideInvalidNotice() {
+    if (!this.invalidNoticeRef) return;
+    this.invalidNoticeRef.innerText = '';
   }
 
   // ************* apis *************
-  public getValidValue(value: string) {
+  public setValidValue(value: string) {
     const validValue = value.replace(this.validationOption.regexp, '');
-    this.inputValue = validValue;
 
-    return validValue;
+    this.inputValue = validValue;
+    this.inputRef.value = validValue;
   }
 
   public reportValidity() {
-    this.hideInvalidMessage();
+    console.log(this.inputValue);
+    this.hideInvalidNotice();
 
     if (this.isInvalidValue(this.inputValue)) {
-      this.throwInvalidMessage(this.invalidMessage ?? '');
+      this.throwInvalidNotice(this.invalidNotice ?? '');
     }
   }
 }

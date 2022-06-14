@@ -5,17 +5,15 @@ import { InputConstructorRequired } from '@/validator/types';
 
 export default class InputValidatorRequired extends InputValidator {
   private readonly requiredMessage: string;
-  private readonly ref: HTMLElement;
 
   constructor({
     validationType,
     maxLength,
-    invalidMessage,
+    inputRef,
+    invalidNotice,
     requiredMessage,
-    ref,
   }: InputConstructorRequired) {
-    super({ validationType, maxLength, invalidMessage });
+    super({ validationType, maxLength, invalidNotice, inputRef });
     this.requiredMessage = requiredMessage;
-    this.ref = ref;
   }
 }

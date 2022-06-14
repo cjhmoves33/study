@@ -11,10 +11,11 @@ export type ValidationMap = {
 export interface InputConstructor {
   validationType: ValidationType;
   maxLength: number;
-  invalidMessage?: string;
+  inputRef: HTMLInputElement;
+  invalidNotice?: string;
+  invalidNoticeRef?: HTMLSpanElement;
 }
 
 export interface InputConstructorRequired extends InputConstructor {
   requiredMessage: string;
-  ref: HTMLElement;
 }
