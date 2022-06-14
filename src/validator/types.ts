@@ -12,8 +12,8 @@ export interface InputConstructor {
   validationType: ValidationType;
   maxLength: number;
   inputRef: HTMLInputElement;
-  invalidNotice?: string;
   invalidNoticeRef?: HTMLSpanElement;
+  invalidNotice?: string;
 }
 
 export interface InputConstructorRequired extends InputConstructor {

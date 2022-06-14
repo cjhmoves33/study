@@ -1,5 +1,5 @@
-// import InputValidator from '@/validator/inputValidator';
-import InputValidatorRequired from '@/validator/inputValidatorRequired';
+import InputValidator from '@/validator/inputValidator';
+import { InputConstructor } from '@/validator/types';
 
 class App {
   // private ajaxCall() {
@@ -14,22 +14,20 @@ class App {
     ) as HTMLInputElement;
 
     const usernameInvalidNotice = document.querySelector(
-      'span[id=username-invalid-notice]'
+      '#username-invalid-notice'
     ) as HTMLSpanElement;
 
-    const usernameValidator = new InputValidatorRequired({
+    const usernameValidator = new InputValidator({
       validationType: 'username',
       maxLength: 8,
       inputRef: username,
-      invalidNotice: '한글, 영문, 숫자만 입력가능합니다',
       invalidNoticeRef: usernameInvalidNotice,
-      requiredMessage: '이름을 입력하세요',
+      invalidNotice: '한글, 영문, 숫자만 입력가능합니다',
     });
 
     username.oninput = e => {
       const target = e.target as HTMLInputElement;
-      usernameValidator.setValidValue(target.value);
-      usernameValidator.reportValidity();
+      usernameValidator.setValidValue(target.value).reportValidity();
     };
 
     form.onsubmit = e => {

@@ -11,15 +11,16 @@ export default class InputValidator {
   private readonly validationOption;
 
   // ************* states *************
-  private inputValue = '';
+  // private inputValue = '';
+  private isValid = true;
 
   // ************* constructor *************
   constructor({
     validationType,
     maxLength,
     inputRef,
-    invalidNotice,
     invalidNoticeRef,
+    invalidNotice,
   }: InputConstructor) {
     this.inputRef = inputRef;
     this.invalidNotice = invalidNotice;
@@ -28,13 +29,13 @@ export default class InputValidator {
   }
 
   // ************* methods *************
-  private isInvalidValue(value: string) {
-    return this.validationOption.regexp.test(value);
+  private isValidValue(value: string) {
+    return !this.validationOption.regexp.test(value);
   }
 
-  private throwInvalidNotice(invalidNotice: string) {
+  private throwInvalidNotice() {
     if (!this.invalidNoticeRef) return;
-    this.invalidNoticeRef.innerText = invalidNotice;
+    this.invalidNoticeRef.innerText = this.invalidNotice ?? '';
   }
 
   private hideInvalidNotice() {
@@ -42,21 +43,22 @@ export default class InputValidator {
     this.invalidNoticeRef.innerText = '';
   }
 
-  // ************* apis *************
+  // ************* interfaces *************
   public setValidValue(value: string) {
     const validValue = value.replace(this.validationOption.regexp, '');
 
-    this.inputValue = validValue;
     this.inputRef.value = validValue;
+    this.isValid = this.isValidValue(value);
+
+    return this;
   }
 
   public reportValidity() {
-    console.log(this.inputValue);
-    // NOTE: this.setValidValue() 에서 바로 유효한값으로 만들기때문에 report가 되지않음.
-    this.hideInvalidNotice();
-
-    if (this.isInvalidValue(this.inputValue)) {
-      this.throwInvalidNotice(this.invalidNotice ?? '');
+    if (this.isValid) {
+      this.hideInvalidNotice();
+      return;
     }
+
+    this.throwInvalidNotice();
   }
 }

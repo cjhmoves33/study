@@ -16,5 +16,6 @@
       "extensionsToKeep": [".json"]
     }]
   ],
-  "ignore": ["*.js", "js/"]
+  "ignore": ["*.js", "js/"],
+  "comments": false
 }
