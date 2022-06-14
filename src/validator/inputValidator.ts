@@ -52,6 +52,7 @@ export default class InputValidator {
 
   public reportValidity() {
     console.log(this.inputValue);
+    // NOTE: this.setValidValue() 에서 바로 유효한값으로 만들기때문에 report가 되지않음.
     this.hideInvalidNotice();
 
     if (this.isInvalidValue(this.inputValue)) {
