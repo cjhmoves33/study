@@ -1,5 +1,4 @@
 import InputValidator from '@/validator/inputValidator';
-import { InputConstructor } from '@/validator/types';
 
 class App {
   // private ajaxCall() {

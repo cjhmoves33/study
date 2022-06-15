@@ -30,7 +30,9 @@ export default class InputValidator {
 
   // ************* methods *************
   private isValidValue(value: string) {
-    return !this.validationOption.regexp.test(value);
+    const isValid = !this.validationOption.regexp.test(value);
+    this.validationOption.regexp.lastIndex = 0; // test말고 다른걸 고려해볼까싶음.
+    return isValid;
   }
 
   private throwInvalidNotice() {
