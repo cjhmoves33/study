@@ -8,7 +8,7 @@ export default class InputValidator {
   private readonly inputRef;
   private readonly invalidNotice;
   private readonly invalidNoticeRef;
-  private readonly validationOption;
+  private readonly validationMap;
 
   // ************* states *************
   // private inputValue = '';
@@ -25,32 +25,34 @@ export default class InputValidator {
     this.inputRef = inputRef;
     this.invalidNotice = invalidNotice;
     this.invalidNoticeRef = invalidNoticeRef;
-    this.validationOption = getValidationMap(validationType, maxLength);
+    this.validationMap = getValidationMap(validationType, maxLength);
   }
 
   // ************* methods *************
-  private isValidValue(value: string) {
-    const isValid = !this.validationOption.regexp.test(value);
-    this.validationOption.regexp.lastIndex = 0; // test말고 다른걸 고려해볼까싶음.
-    return isValid;
+  private setIsValid(value: string) {
+    this.isValid = !value.match(this.validationMap.regexp);
+  }
+
+  private setValue(value: string) {
+    this.inputRef.value = value;
   }
 
   private throwInvalidNotice() {
-    if (!this.invalidNoticeRef) return;
+    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 수정해볼까
     this.invalidNoticeRef.innerText = this.invalidNotice ?? '';
   }
 
   private hideInvalidNotice() {
-    if (!this.invalidNoticeRef) return;
+    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 수정해볼까
     this.invalidNoticeRef.innerText = '';
   }
 
   // ************* interfaces *************
   public setValidValue(value: string) {
-    const validValue = value.replace(this.validationOption.regexp, '');
+    const validValue = value.replace(this.validationMap.regexp, '');
 
-    this.inputRef.value = validValue;
-    this.isValid = this.isValidValue(value);
+    this.setValue(validValue);
+    this.setIsValid(value);
 
     return this;
   }

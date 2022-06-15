@@ -20,8 +20,8 @@ class App {
       validationType: 'username',
       maxLength: 8,
       inputRef: username,
-      invalidNoticeRef: usernameInvalidNotice,
       invalidNotice: '한글, 영문, 숫자만 입력가능합니다',
+      invalidNoticeRef: usernameInvalidNotice,
     });
 
     username.oninput = e => {
