@@ -33,8 +33,12 @@ export class UseValidator {
     return !!this.validValue;
   }
 
-  public focus() {
+  public alert() {
     alert(this.validationPlan.requireMessage);
+    return this;
+  }
+
+  public focus() {
     this.validationPlan.inputRef.focus();
   }
 }

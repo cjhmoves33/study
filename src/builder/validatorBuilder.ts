@@ -46,10 +46,6 @@ export class ValidationPlanBuilder {
 // ************* Rules Builder *************
 
 class ValidationRulesBuilder extends ValidationPlanBuilder {
-  constructor(validationPlan: ValidationPlan) {
-    super(validationPlan);
-  }
-
   public pattern(pattern: RegExp) {
     this.validationPlan.pattern = pattern;
     return this;
@@ -74,10 +70,6 @@ class ValidationRulesBuilder extends ValidationPlanBuilder {
 // ************* Refs Builder *************
 
 class ValidationRefsBuilder extends ValidationPlanBuilder {
-  constructor(validationPlan: ValidationPlan) {
-    super(validationPlan);
-  }
-
   public inputRef(inputRef: HTMLInputElement) {
     this.validationPlan.inputRef = inputRef;
     return this;

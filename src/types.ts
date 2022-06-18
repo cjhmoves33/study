@@ -6,18 +6,16 @@ export interface ValidationOption {
   requireMessage: string;
 }
 
-export type ValidationMap = {
-  [key in ValidationType]: () => ValidationOption;
-};
+export type ValidationMap = Record<ValidationType, ValidationOption>;
 
-export interface InputConstructor {
-  validationType: ValidationType;
-  maxLength: number;
-  inputRef: HTMLInputElement;
-  invalidNoticeRef?: HTMLSpanElement;
-  invalidNotice?: string;
-}
+// export interface InputConstructor {
+//   validationType: ValidationType;
+//   maxLength: number;
+//   inputRef: HTMLInputElement;
+//   invalidNoticeRef?: HTMLSpanElement;
+//   invalidNotice?: string;
+// }
 
-export interface InputConstructorRequired extends InputConstructor {
-  requiredMessage: string;
-}
+// export interface InputConstructorRequired extends InputConstructor {
+//   requiredMessage: string;
+// }
