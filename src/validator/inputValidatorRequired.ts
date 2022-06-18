@@ -1,7 +1,7 @@
 // parent
 import InputValidator from '@/validator/inputValidator';
 // types
-import { InputConstructorRequired } from '@/validator/types';
+import { InputConstructorRequired } from '@/types';
 
 export default class InputValidatorRequired extends InputValidator {
   private readonly requiredMessage: string;

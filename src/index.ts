@@ -21,7 +21,7 @@ class App {
       '#username-invalid-notice'
     ) as HTMLSpanElement;
 
-    const { pattern, maxLength, invalidMessage } =
+    const { pattern, maxLength, invalidMessage, requireMessage } =
       getValidationRule('username');
 
     const validationPlanBuilder = new ValidationPlanBuilder();
@@ -29,7 +29,7 @@ class App {
       .pattern(pattern)
       .maxLength(maxLength)
       .invalidMessage(invalidMessage)
-      .requiredMessage('필수입력 해야합니다.')
+      .requireMessage(requireMessage)
       .refs.inputRef(usernameRef)
       .invalidMessageRef(usernameInvalidMessageRef)
       .build();

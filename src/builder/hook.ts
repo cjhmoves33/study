@@ -34,7 +34,7 @@ export class UseValidator {
   }
 
   public focus() {
-    alert(this.validationPlan.requiredMessage);
+    alert(this.validationPlan.requireMessage);
     this.validationPlan.inputRef.focus();
   }
 }

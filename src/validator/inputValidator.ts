@@ -1,5 +1,5 @@
 // types
-import { InputConstructor } from '@/validator/types';
+import { InputConstructor } from '@/types';
 // modules
 import { getValidationRule } from '@/module';
 

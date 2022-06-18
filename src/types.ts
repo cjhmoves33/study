@@ -3,6 +3,7 @@ export interface ValidationOption {
   pattern: RegExp;
   maxLength: number;
   invalidMessage: string;
+  requireMessage: string;
 }
 
 export type ValidationMap = {

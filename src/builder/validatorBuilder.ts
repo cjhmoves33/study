@@ -5,18 +5,19 @@ export class ValidationPlan {
   public pattern!: RegExp;
   public maxLength!: number;
   public invalidMessage!: string;
-  public requiredMessage!: string;
+  public requireMessage!: string;
   // refs
   public inputRef!: HTMLInputElement;
   public invalidMessageRef!: HTMLSpanElement;
 
+  // log
   public log() {
     console.log('pattern: ', this.pattern);
     console.log('maxLength: ', this.maxLength);
     console.log('inputRef: ', this.inputRef);
     console.log('invalidMessage: ', this.invalidMessage);
     console.log('invalidMessageRef: ', this.invalidMessageRef);
-    console.log('requiredMessage: ', this.requiredMessage);
+    console.log('requireMessage: ', this.requireMessage);
   }
 }
 
@@ -64,8 +65,8 @@ class ValidationRulesBuilder extends ValidationPlanBuilder {
     return this;
   }
 
-  public requiredMessage(requiredMessage: string) {
-    this.validationPlan.requiredMessage = requiredMessage;
+  public requireMessage(requireMessage: string) {
+    this.validationPlan.requireMessage = requireMessage;
     return this;
   }
 }
