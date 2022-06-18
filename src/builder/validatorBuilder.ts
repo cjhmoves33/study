@@ -30,10 +30,6 @@ export class ValidationPlanBuilder {
     this.validationPlan = validationPlan;
   }
 
-  private reset() {
-    this.validationPlan = new ValidationPlan();
-  }
-
   public get rules() {
     return new ValidationRulesBuilder(this.validationPlan);
   }
