@@ -1,33 +1,40 @@
 import { ValidationPlan } from '@/builder/validatorBuilder';
 
 export class UseValidator {
-  private readonly validator: ValidationPlan;
+  private readonly validationPlan: ValidationPlan;
   private isValid = true;
+  private validValue = '';
 
-  constructor(validator: InstanceType<typeof ValidationPlan>) {
-    this.validator = validator;
+  constructor(validationPlan: InstanceType<typeof ValidationPlan>) {
+    this.validationPlan = validationPlan;
   }
 
   public setValue(value: string) {
-    this.isValid = !value.match(this.validator.pattern);
+    this.isValid = !value.match(this.validationPlan.pattern);
+    this.validValue = value.replace(this.validationPlan.pattern, '');
 
-    if (this.isValid) {
-      this.validator.inputRef.value = value;
-      return this;
-    } else {
-      this.validator.inputRef.value = value.replace(this.validator.pattern, '');
-      return this;
-    }
+    this.validationPlan.inputRef.value = this.validValue;
+
+    return this;
   }
 
   public reportValidity() {
     if (this.isValid) {
-      this.validator.invalidMessageRef.innerText = '';
+      this.validationPlan.invalidMessageRef.innerText = '';
       return;
     } else {
-      this.validator.invalidMessageRef.innerText =
-        this.validator.invalidMessage;
+      this.validationPlan.invalidMessageRef.innerText =
+        this.validationPlan.invalidMessage;
       return;
     }
+  }
+
+  public hasValue() {
+    return !!this.validValue;
+  }
+
+  public focus() {
+    alert(this.validationPlan.requiredMessage);
+    this.validationPlan.inputRef.focus();
   }
 }
