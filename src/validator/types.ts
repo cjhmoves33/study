@@ -1,7 +1,8 @@
 export type ValidationType = 'username' | 'id' | 'password';
 export interface ValidationOption {
-  regexp: RegExp;
+  pattern: RegExp;
   maxLength: number;
+  invalidMessage: string;
 }
 
 export type ValidationMap = {

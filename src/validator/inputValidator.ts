@@ -1,23 +1,21 @@
 // types
 import { InputConstructor } from '@/validator/types';
 // modules
-import { getValidationMap } from '@/validator/module';
+import { getValidationRule } from '@/module';
 
 export default class InputValidator {
   // ************* constructors *************
   private readonly inputRef;
   private readonly invalidNotice;
   private readonly invalidNoticeRef;
-  private readonly validationMap;
+  private readonly validationRule;
 
   // ************* states *************
-  // private inputValue = '';
   private isValid = true;
 
   // ************* constructor *************
   constructor({
     validationType,
-    maxLength,
     inputRef,
     invalidNoticeRef,
     invalidNotice,
@@ -25,12 +23,12 @@ export default class InputValidator {
     this.inputRef = inputRef;
     this.invalidNotice = invalidNotice;
     this.invalidNoticeRef = invalidNoticeRef;
-    this.validationMap = getValidationMap(validationType, maxLength);
+    this.validationRule = getValidationRule(validationType);
   }
 
-  // ************* methods *************
+  // ************* private methods *************
   private setIsValid(value: string) {
-    this.isValid = !value.match(this.validationMap.regexp);
+    this.isValid = !value.match(this.validationRule.pattern);
   }
 
   private setValue(value: string) {
@@ -38,18 +36,18 @@ export default class InputValidator {
   }
 
   private throwInvalidNotice() {
-    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 수정해볼까
+    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 타입 가드용..
     this.invalidNoticeRef.innerText = this.invalidNotice ?? '';
   }
 
   private hideInvalidNotice() {
-    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 수정해볼까
+    if (!this.invalidNoticeRef) return; // invalidNoticeRef은 필수값이 아니여서.. 타입 가드용..
     this.invalidNoticeRef.innerText = '';
   }
 
   // ************* interfaces *************
   public setValidValue(value: string) {
-    const validValue = value.replace(this.validationMap.regexp, '');
+    const validValue = value.replace(this.validationRule.pattern, '');
 
     this.setValue(validValue);
     this.setIsValid(value);

@@ -1,4 +1,5 @@
-import InputValidator from '@/validator/inputValidator';
+import { ValidatorBuilder } from '@/builder/validatorBuilder';
+import { getValidationRule } from '@/module';
 
 class App {
   // private ajaxCall() {
@@ -8,26 +9,30 @@ class App {
   private bindEvent() {
     const form = document.querySelector('form') as HTMLFormElement;
 
-    const username = document.querySelector(
+    const usernameRef = document.querySelector(
       'input[type=text][name=username]'
     ) as HTMLInputElement;
 
-    const usernameInvalidNotice = document.querySelector(
+    const usernameInvalidMessageRef = document.querySelector(
       '#username-invalid-notice'
     ) as HTMLSpanElement;
 
-    const usernameValidator = new InputValidator({
-      validationType: 'username',
-      maxLength: 8,
-      inputRef: username,
-      invalidNotice: '한글, 영문, 숫자만 입력가능합니다',
-      invalidNoticeRef: usernameInvalidNotice,
-    });
+    const { pattern, maxLength, invalidMessage } =
+      getValidationRule('username');
 
-    username.oninput = e => {
-      const target = e.target as HTMLInputElement;
-      usernameValidator.setValidValue(target.value).reportValidity();
-    };
+    const validatorBuilder = new ValidatorBuilder();
+    const usernameValidator = validatorBuilder.rules
+      .pattern(pattern)
+      .maxLength(maxLength)
+      .invalidMessage(invalidMessage)
+      .requiredMessage('필수입력 해야합니다.')
+      .refs.inputRef(usernameRef)
+      .invalidMessageRef(usernameInvalidMessageRef)
+      .build();
+
+    usernameValidator.log();
+
+    // usernameRef.oninput = e => {};
 
     form.onsubmit = e => {
       e.preventDefault();
