@@ -37,6 +37,8 @@ class App {
       .invalidMessageRef(usernameInvalidMessageRef)
       .build();
 
+    usernameValidationPlan.log();
+
     // 4. 유효성검사 플랜에 맞는 검사기(hook) 제작
     const usernameValidator = new UseValidator(usernameValidationPlan);
 

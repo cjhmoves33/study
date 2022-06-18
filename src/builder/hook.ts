@@ -1,11 +1,12 @@
-import { ValidationPlan } from '@/builder/validatorBuilder';
+import { ValidationPlanInstance } from '@/builder/validatorBuilder';
 
 export class UseValidator {
-  private readonly validationPlan: ValidationPlan;
+  private readonly validationPlan;
+
   private isValid = true;
   private validValue = '';
 
-  constructor(validationPlan: InstanceType<typeof ValidationPlan>) {
+  constructor(validationPlan: ValidationPlanInstance) {
     this.validationPlan = validationPlan;
   }
 

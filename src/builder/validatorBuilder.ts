@@ -1,6 +1,6 @@
 // ************* Validator *************
-
-export class ValidationPlan {
+export type ValidationPlanInstance = InstanceType<typeof ValidationPlan>;
+class ValidationPlan {
   // rules
   public pattern!: RegExp;
   public maxLength!: number;
@@ -28,6 +28,10 @@ export class ValidationPlanBuilder {
 
   constructor(validationPlan = new ValidationPlan()) {
     this.validationPlan = validationPlan;
+  }
+
+  private reset() {
+    this.validationPlan = new ValidationPlan();
   }
 
   public get rules() {
