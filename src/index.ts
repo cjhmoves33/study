@@ -34,13 +34,12 @@ class App {
       .invalidMessageRef(usernameInvalidMessageRef)
       .build();
 
-    const validation = new UseValidation(usernameValidator);
-
     usernameValidator.log();
+    const validationHook = new UseValidation(usernameValidator);
 
     usernameRef.oninput = e => {
       const target = e.target as HTMLInputElement;
-      validation.setValue(target.value);
+      validationHook.setValue(target.value).reportValidity();
     };
 
     form.onsubmit = e => {

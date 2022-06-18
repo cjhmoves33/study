@@ -12,9 +12,11 @@ export class Validator {
 
   public log() {
     console.log('pattern: ', this.pattern);
+    console.log('maxLength: ', this.maxLength);
     console.log('inputRef: ', this.inputRef);
     console.log('invalidMessage: ', this.invalidMessage);
     console.log('invalidMessageRef: ', this.invalidMessageRef);
+    console.log('requiredMessage: ', this.requiredMessage);
   }
 }
 

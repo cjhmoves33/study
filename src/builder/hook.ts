@@ -1,19 +1,30 @@
 import { Validator } from '@/builder/validatorBuilder';
 
 export class UseValidation {
-  private validator: Validator;
-  constructor(validator: Validator) {
+  private readonly validator: Validator;
+  private isValid = true;
+
+  constructor(validator: InstanceType<typeof Validator>) {
     this.validator = validator;
   }
 
   public setValue(value: string) {
-    const isValid = !value.match(this.validator.pattern);
-    if (isValid) {
-      this.validator.invalidMessageRef.innerText = '';
+    this.isValid = !value.match(this.validator.pattern);
+
+    if (this.isValid) {
       this.validator.inputRef.value = value;
+      return this;
+    }
+    this.validator.inputRef.value = value.replace(this.validator.pattern, '');
+    return this;
+  }
+
+  public reportValidity() {
+    if (this.isValid) {
+      this.validator.invalidMessageRef.innerText = '';
       return;
     }
     this.validator.invalidMessageRef.innerText = this.validator.invalidMessage;
-    this.validator.inputRef.value = value.replace(this.validator.pattern, '');
+    return;
   }
 }
