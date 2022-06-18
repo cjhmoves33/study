@@ -32,7 +32,10 @@ class App {
 
     usernameValidator.log();
 
-    // usernameRef.oninput = e => {};
+    usernameRef.oninput = e => {
+      const target = e.target as HTMLInputElement;
+      usernameValidator.setValue(target.value);
+    };
 
     form.onsubmit = e => {
       e.preventDefault();

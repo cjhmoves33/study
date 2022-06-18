@@ -2,19 +2,30 @@
 
 class Validator {
   // rules
-  public pattern?: RegExp;
-  public maxLength?: number;
-  public invalidMessage?: string;
-  public requiredMessage?: string;
+  public pattern!: RegExp;
+  public maxLength!: number;
+  public invalidMessage!: string;
+  public requiredMessage!: string;
   // refs
-  public inputRef?: HTMLElement;
-  public invalidMessageRef?: HTMLElement;
+  public inputRef!: HTMLInputElement;
+  public invalidMessageRef!: HTMLSpanElement;
 
   public log() {
     console.log('pattern: ', this.pattern);
     console.log('inputRef: ', this.inputRef);
     console.log('invalidMessage: ', this.invalidMessage);
     console.log('invalidMessageRef: ', this.invalidMessageRef);
+  }
+
+  public setValue(value: string) {
+    const isValid = !value.match(this.pattern);
+    if (isValid) {
+      this.invalidMessageRef.innerText = '';
+      this.inputRef.value = value;
+      return;
+    }
+    this.invalidMessageRef.innerText = this.invalidMessage;
+    this.inputRef.value = value.replace(this.pattern, '');
   }
 }
 
@@ -75,12 +86,12 @@ class ValidatorRefsBuilder extends ValidatorBuilder {
     super(validator);
   }
 
-  public inputRef(inputRef: HTMLElement) {
+  public inputRef(inputRef: HTMLInputElement) {
     this.validator.inputRef = inputRef;
     return this;
   }
 
-  public invalidMessageRef(invalidMessageRef: HTMLElement) {
+  public invalidMessageRef(invalidMessageRef: HTMLSpanElement) {
     this.validator.invalidMessageRef = invalidMessageRef;
     return this;
   }
