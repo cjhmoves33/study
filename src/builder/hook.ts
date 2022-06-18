@@ -1,10 +1,10 @@
-import { Validator } from '@/builder/validatorBuilder';
+import { ValidationPlan } from '@/builder/validatorBuilder';
 
-export class UseValidation {
-  private readonly validator: Validator;
+export class UseValidator {
+  private readonly validator: ValidationPlan;
   private isValid = true;
 
-  constructor(validator: InstanceType<typeof Validator>) {
+  constructor(validator: InstanceType<typeof ValidationPlan>) {
     this.validator = validator;
   }
 
@@ -14,17 +14,20 @@ export class UseValidation {
     if (this.isValid) {
       this.validator.inputRef.value = value;
       return this;
+    } else {
+      this.validator.inputRef.value = value.replace(this.validator.pattern, '');
+      return this;
     }
-    this.validator.inputRef.value = value.replace(this.validator.pattern, '');
-    return this;
   }
 
   public reportValidity() {
     if (this.isValid) {
       this.validator.invalidMessageRef.innerText = '';
       return;
+    } else {
+      this.validator.invalidMessageRef.innerText =
+        this.validator.invalidMessage;
+      return;
     }
-    this.validator.invalidMessageRef.innerText = this.validator.invalidMessage;
-    return;
   }
 }

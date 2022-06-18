@@ -1,9 +1,9 @@
 // builder
-import { ValidatorBuilder } from '@/builder/validatorBuilder';
+import { ValidationPlanBuilder } from '@/builder/validatorBuilder';
 // modules
 import { getValidationRule } from '@/module';
 // hooks
-import { UseValidation } from '@/builder/hook';
+import { UseValidator } from '@/builder/hook';
 
 class App {
   // private ajaxCall() {
@@ -24,8 +24,8 @@ class App {
     const { pattern, maxLength, invalidMessage } =
       getValidationRule('username');
 
-    const validatorBuilder = new ValidatorBuilder();
-    const usernameValidator = validatorBuilder.rules
+    const validationPlanBuilder = new ValidationPlanBuilder();
+    const usernameValidationPlan = validationPlanBuilder.rules
       .pattern(pattern)
       .maxLength(maxLength)
       .invalidMessage(invalidMessage)
@@ -34,12 +34,11 @@ class App {
       .invalidMessageRef(usernameInvalidMessageRef)
       .build();
 
-    usernameValidator.log();
-    const validationHook = new UseValidation(usernameValidator);
+    const usernameValidator = new UseValidator(usernameValidationPlan);
 
     usernameRef.oninput = e => {
       const target = e.target as HTMLInputElement;
-      validationHook.setValue(target.value).reportValidity();
+      usernameValidator.setValue(target.value).reportValidity();
     };
 
     form.onsubmit = e => {

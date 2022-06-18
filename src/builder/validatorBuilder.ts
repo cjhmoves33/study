@@ -1,6 +1,6 @@
 // ************* Validator *************
 
-export class Validator {
+export class ValidationPlan {
   // rules
   public pattern!: RegExp;
   public maxLength!: number;
@@ -22,68 +22,68 @@ export class Validator {
 
 // ************* Builder *************
 
-export class ValidatorBuilder {
-  protected validator: Validator;
+export class ValidationPlanBuilder {
+  protected validationPlan: ValidationPlan;
 
-  constructor(validator = new Validator()) {
-    this.validator = validator;
+  constructor(validationPlan = new ValidationPlan()) {
+    this.validationPlan = validationPlan;
   }
 
   public get rules() {
-    return new ValidatorRulesBuilder(this.validator);
+    return new ValidationRulesBuilder(this.validationPlan);
   }
 
   public get refs() {
-    return new ValidatorRefsBuilder(this.validator);
+    return new ValidationRefsBuilder(this.validationPlan);
   }
 
   public build() {
-    return this.validator;
+    return this.validationPlan;
   }
 }
 
 // ************* Rules Builder *************
 
-class ValidatorRulesBuilder extends ValidatorBuilder {
-  constructor(validator: Validator) {
-    super(validator);
+class ValidationRulesBuilder extends ValidationPlanBuilder {
+  constructor(validationPlan: ValidationPlan) {
+    super(validationPlan);
   }
 
   public pattern(pattern: RegExp) {
-    this.validator.pattern = pattern;
+    this.validationPlan.pattern = pattern;
     return this;
   }
 
   public maxLength(maxLength: number) {
-    this.validator.maxLength = maxLength;
+    this.validationPlan.maxLength = maxLength;
     return this;
   }
 
   public invalidMessage(invalidMessage: string) {
-    this.validator.invalidMessage = invalidMessage;
+    this.validationPlan.invalidMessage = invalidMessage;
     return this;
   }
 
   public requiredMessage(requiredMessage: string) {
-    this.validator.requiredMessage = requiredMessage;
+    this.validationPlan.requiredMessage = requiredMessage;
     return this;
   }
 }
 
 // ************* Refs Builder *************
 
-class ValidatorRefsBuilder extends ValidatorBuilder {
-  constructor(validator: Validator) {
-    super(validator);
+class ValidationRefsBuilder extends ValidationPlanBuilder {
+  constructor(validationPlan: ValidationPlan) {
+    super(validationPlan);
   }
 
   public inputRef(inputRef: HTMLInputElement) {
-    this.validator.inputRef = inputRef;
+    this.validationPlan.inputRef = inputRef;
     return this;
   }
 
   public invalidMessageRef(invalidMessageRef: HTMLSpanElement) {
-    this.validator.invalidMessageRef = invalidMessageRef;
+    this.validationPlan.invalidMessageRef = invalidMessageRef;
     return this;
   }
 }
