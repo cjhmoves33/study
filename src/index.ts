@@ -46,7 +46,7 @@ class App {
       usernameValidator.setValue(target.value).reportValidity();
     };
 
-    // 5. [form 제출시] 검사기로 값 여부 확인 및 포커싱(필수입력 값일 시)
+    // 5. [form 제출시] 검사기로 값 여부 확인 및 포커싱
     form.onsubmit = e => {
       e.preventDefault();
       if (!usernameValidator.hasValue()) {
