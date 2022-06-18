@@ -1,5 +1,4 @@
 // ************* Validator *************
-export type ValidationPlanInstance = InstanceType<typeof ValidationPlan>;
 class ValidationPlan {
   // rules
   public pattern!: RegExp;
@@ -23,29 +22,14 @@ class ValidationPlan {
 
 // ************* Builder *************
 
-export class ValidationPlanBuilder {
-  protected validationPlan;
+export class ValidationPlanBuilderV2 {
+  private validationPlan;
 
   constructor(validationPlan = new ValidationPlan()) {
     this.validationPlan = validationPlan;
   }
 
-  public get rules() {
-    return new ValidationRulesBuilder(this.validationPlan);
-  }
-
-  public get refs() {
-    return new ValidationRefsBuilder(this.validationPlan);
-  }
-
-  public build() {
-    return this.validationPlan;
-  }
-}
-
-// ************* Rules Builder *************
-
-class ValidationRulesBuilder extends ValidationPlanBuilder {
+  // rules
   public pattern(pattern: RegExp) {
     this.validationPlan.pattern = pattern;
     return this;
@@ -65,11 +49,8 @@ class ValidationRulesBuilder extends ValidationPlanBuilder {
     this.validationPlan.requireMessage = requireMessage;
     return this;
   }
-}
 
-// ************* Refs Builder *************
-
-class ValidationRefsBuilder extends ValidationPlanBuilder {
+  // refs
   public inputRef(inputRef: HTMLInputElement) {
     this.validationPlan.inputRef = inputRef;
     return this;
@@ -78,5 +59,9 @@ class ValidationRefsBuilder extends ValidationPlanBuilder {
   public invalidMessageRef(invalidMessageRef: HTMLSpanElement) {
     this.validationPlan.invalidMessageRef = invalidMessageRef;
     return this;
+  }
+
+  public build() {
+    return this.validationPlan;
   }
 }
