@@ -1,5 +1,9 @@
+// builder
 import { ValidatorBuilder } from '@/builder/validatorBuilder';
+// modules
 import { getValidationRule } from '@/module';
+// hooks
+import { UseValidation } from '@/builder/hook';
 
 class App {
   // private ajaxCall() {
@@ -30,11 +34,13 @@ class App {
       .invalidMessageRef(usernameInvalidMessageRef)
       .build();
 
+    const validation = new UseValidation(usernameValidator);
+
     usernameValidator.log();
 
     usernameRef.oninput = e => {
       const target = e.target as HTMLInputElement;
-      usernameValidator.setValue(target.value);
+      validation.setValue(target.value);
     };
 
     form.onsubmit = e => {

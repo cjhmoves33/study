@@ -1,6 +1,6 @@
 // ************* Validator *************
 
-class Validator {
+export class Validator {
   // rules
   public pattern!: RegExp;
   public maxLength!: number;
@@ -15,17 +15,6 @@ class Validator {
     console.log('inputRef: ', this.inputRef);
     console.log('invalidMessage: ', this.invalidMessage);
     console.log('invalidMessageRef: ', this.invalidMessageRef);
-  }
-
-  public setValue(value: string) {
-    const isValid = !value.match(this.pattern);
-    if (isValid) {
-      this.invalidMessageRef.innerText = '';
-      this.inputRef.value = value;
-      return;
-    }
-    this.invalidMessageRef.innerText = this.invalidMessage;
-    this.inputRef.value = value.replace(this.pattern, '');
   }
 }
 
