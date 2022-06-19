@@ -28,7 +28,7 @@ class App {
     const usernameRule = getValidationRule('username');
 
     // 3. 유효성검사 플랜 제작
-    const usernameValidationPlan = new ValidationPlanBuilderV3()
+    const usernameValidationPlan = new ValidationPlanBuilder()
       .setRules({
         pattern: usernameRule.pattern,
         maxLength: usernameRule.maxLength,
