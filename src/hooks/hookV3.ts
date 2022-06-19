@@ -30,17 +30,7 @@ export class UseValidator {
     this.isValid = !value.match(this.rule.pattern);
   }
 
-  public get hasValue() {
-    return !!this.validValue;
-  }
-
-  public validate() {
-    const value = this.refs.inputRef.value;
-    this.setIsValid(value);
-    this.setValue(value);
-  }
-
-  public reportValidity() {
+  private reportValidity() {
     if (!this.refs.invalidMessageRef) return;
 
     if (this.isValid) {
@@ -52,6 +42,14 @@ export class UseValidator {
     }
   }
 
+  public validate() {
+    const value = this.refs.inputRef.value;
+
+    this.setIsValid(value);
+    this.setValue(value);
+    this.reportValidity();
+  }
+
   public alert() {
     if (!this.rule.requireMessage) return;
 
@@ -60,5 +58,9 @@ export class UseValidator {
 
   public focus() {
     this.refs.inputRef.focus();
+  }
+
+  public get hasValue() {
+    return !!this.validValue;
   }
 }
