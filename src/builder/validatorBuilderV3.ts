@@ -1,35 +1,33 @@
-import { ValidationRules, ValidationRefs } from '@/types';
+import { ValidationRule, ValidationRefs } from '@/types';
 
-export type ValidationPlanV3Instance = InstanceType<
-  typeof ValidationPlanBuilder
->;
+export type ValidationPlanV3Instance = InstanceType<typeof ValidationPlan>;
 
 interface PlanBuilder {
-  rules: ValidationRules;
+  rule: ValidationRule;
   refs: ValidationRefs;
-  setRules(rules: ValidationRules): PlanBuilder;
+  setRule(rule: ValidationRule): PlanBuilder;
   setRefs(refs: ValidationRefs): PlanBuilder;
   build(): InstanceType<typeof ValidationPlan>;
 }
 
 interface Plan {
-  rules: ValidationRules;
+  rule: ValidationRule;
   refs: ValidationRefs;
   log(): void;
 }
 // ************* Validator *************
 
 class ValidationPlan implements Plan {
-  private __Rules__!: ValidationRules;
+  private __Rule__!: ValidationRule;
   private __Refs__!: ValidationRefs;
 
-  constructor(rules: ValidationRules, refs: ValidationRefs) {
-    this.__Rules__ = { ...rules };
+  constructor(rule: ValidationRule, refs: ValidationRefs) {
+    this.__Rule__ = { ...rule };
     this.__Refs__ = { ...refs };
   }
 
-  get rules() {
-    return this.__Rules__;
+  get rule() {
+    return this.__Rule__;
   }
 
   get refs() {
@@ -38,8 +36,8 @@ class ValidationPlan implements Plan {
 
   // log
   public log() {
-    console.log('Rules: ');
-    console.table(this.rules);
+    console.log('Rule: ');
+    console.table(this.rule);
     console.log('Refs: ');
     console.table(this.refs);
   }
@@ -48,19 +46,19 @@ class ValidationPlan implements Plan {
 // ************* Builder *************
 
 export class ValidationPlanBuilder implements PlanBuilder {
-  private __Rules__!: ValidationRules;
+  private __Rule__!: ValidationRule;
   private __Refs__!: ValidationRefs;
 
-  get rules() {
-    return this.__Rules__;
+  get rule() {
+    return this.__Rule__;
   }
 
   get refs() {
     return this.__Refs__;
   }
 
-  public setRules(rules: ValidationRules) {
-    this.__Rules__ = { ...rules };
+  public setRule(rule: ValidationRule) {
+    this.__Rule__ = { ...rule };
     return this;
   }
 
@@ -70,6 +68,6 @@ export class ValidationPlanBuilder implements PlanBuilder {
   }
 
   public build() {
-    return new ValidationPlan(this.rules, this.refs);
+    return new ValidationPlan(this.rule, this.refs);
   }
 }
