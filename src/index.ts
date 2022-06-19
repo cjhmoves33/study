@@ -1,11 +1,11 @@
 // builder
 // import { ValidationPlanBuilder } from '@/builder/validatorBuilder';
 // import { ValidationPlanBuilderV2 } from '@/builder/validatorBuilderV2';
-import { ValidationPlanBuilderV3 } from '@/builder/validatorBuilderV3';
+import { ValidationPlanBuilder } from '@/builder/validatorBuilderV3';
 // modules
 import { getValidationRule } from '@/module';
 // hooks
-import { UseValidator } from '@/hooks/hook';
+// import { UseValidator } from '@/hooks/hook';
 
 class App {
   // private ajaxCall() {
@@ -28,18 +28,19 @@ class App {
     const usernameRule = getValidationRule('username');
 
     // 3. 유효성검사 플랜 제작
-    // const usernameValidationPlan = new ValidationPlanBuilderV3()
-    //   .setRules({
-    //     pattern: usernameRule.pattern,
-    //     maxLength: usernameRule.maxLength,
-    //     invalidMessage: usernameRule.invalidMessage,
-    //     requireMessage: usernameRule.requireMessage,
-    //   })
-    //   .setRefs({
-    //     inputRef: usernameRef,
-    //     invalidMessageRef: usernameInvalidMessageRef,
-    //   })
-    //   .build();
+    const usernameValidationPlan = new ValidationPlanBuilderV3()
+      .setRules({
+        pattern: usernameRule.pattern,
+        maxLength: usernameRule.maxLength,
+        invalidMessage: usernameRule.invalidMessage,
+        requireMessage: usernameRule.requireMessage,
+      })
+      .setRefs({
+        inputRef: usernameRef,
+        invalidMessageRef: usernameInvalidMessageRef,
+      })
+      .build();
+
     // 4. 유효성검사 플랜에 맞는 검사기(hook) 제작
     // const usernameValidator = new UseValidator(usernameValidationPlan);
 

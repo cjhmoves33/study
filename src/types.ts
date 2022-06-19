@@ -1,16 +1,16 @@
 export type ValidationType = 'username' | 'id' | 'password';
-export interface ValidationRule {
+export interface ValidationRules {
   pattern: RegExp;
   maxLength: number;
-  invalidMessage: string;
-  requireMessage: string;
+  invalidMessage?: string;
+  requireMessage?: string;
 }
 
-export type ValidationMap = Record<ValidationType, ValidationRule>;
+export type ValidationMap = Record<ValidationType, ValidationRules>;
 
 export interface ValidationRefs {
   inputRef: HTMLInputElement;
-  invalidMessageRef: HTMLSpanElement;
+  invalidMessageRef?: HTMLSpanElement;
 }
 
 // export interface InputConstructor {

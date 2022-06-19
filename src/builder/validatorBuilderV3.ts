@@ -1,54 +1,75 @@
-import { ValidationRule, ValidationRefs } from '@/types';
+import { ValidationRules, ValidationRefs } from '@/types';
 
 export type ValidationPlanV3Instance = InstanceType<
-  typeof ValidationPlanBuilderV3
+  typeof ValidationPlanBuilder
 >;
+
+interface PlanBuilder {
+  rules: ValidationRules;
+  refs: ValidationRefs;
+  setRules(rules: ValidationRules): PlanBuilder;
+  setRefs(refs: ValidationRefs): PlanBuilder;
+  build(): InstanceType<typeof ValidationPlan>;
+}
+
+interface Plan {
+  rules: ValidationRules;
+  refs: ValidationRefs;
+  log(): void;
+}
 // ************* Validator *************
 
-class ValidationPlan {
-  // rules
-  protected pattern!: RegExp;
-  protected maxLength!: number;
-  protected invalidMessage!: string;
-  protected requireMessage!: string;
-  // refs
-  protected inputRef!: HTMLInputElement;
-  protected invalidMessageRef!: HTMLSpanElement;
+class ValidationPlan implements Plan {
+  private __Rules__!: ValidationRules;
+  private __Refs__!: ValidationRefs;
+
+  constructor(rules: ValidationRules, refs: ValidationRefs) {
+    this.__Rules__ = { ...rules };
+    this.__Refs__ = { ...refs };
+  }
+
+  get rules() {
+    return this.__Rules__;
+  }
+
+  get refs() {
+    return this.__Refs__;
+  }
 
   // log
   public log() {
-    console.log('pattern: ', this.pattern);
-    console.log('maxLength: ', this.maxLength);
-    console.log('inputRef: ', this.inputRef);
-    console.log('invalidMessage: ', this.invalidMessage);
-    console.log('invalidMessageRef: ', this.invalidMessageRef);
-    console.log('requireMessage: ', this.requireMessage);
+    console.log('Rules: ');
+    console.table(this.rules);
+    console.log('Refs: ');
+    console.table(this.refs);
   }
 }
 
 // ************* Builder *************
 
-export class ValidationPlanBuilderV3 extends ValidationPlan {
-  public setRules({
-    pattern,
-    maxLength,
-    invalidMessage,
-    requireMessage,
-  }: ValidationRule) {
-    this.pattern = pattern;
-    this.maxLength = maxLength;
-    this.invalidMessage = invalidMessage;
-    this.requireMessage = requireMessage;
+export class ValidationPlanBuilder implements PlanBuilder {
+  private __Rules__!: ValidationRules;
+  private __Refs__!: ValidationRefs;
+
+  get rules() {
+    return this.__Rules__;
+  }
+
+  get refs() {
+    return this.__Refs__;
+  }
+
+  public setRules(rules: ValidationRules) {
+    this.__Rules__ = { ...rules };
     return this;
   }
 
-  public setRefs({ inputRef, invalidMessageRef }: ValidationRefs) {
-    this.inputRef = inputRef;
-    this.invalidMessageRef = invalidMessageRef;
+  public setRefs(refs: ValidationRefs) {
+    this.__Refs__ = { ...refs };
     return this;
   }
 
   public build() {
-    return this;
+    return new ValidationPlan(this.rules, this.refs);
   }
 }
