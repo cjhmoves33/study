@@ -50,7 +50,7 @@ export class UseValidator {
     this.reportValidity();
   }
 
-  public alert() {
+  public alertHasNoValue() {
     if (!this.rule.requireMessage) return;
 
     alert(this.rule.requireMessage);

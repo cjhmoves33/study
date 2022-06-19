@@ -53,7 +53,7 @@ class App {
     form.onsubmit = e => {
       e.preventDefault();
       if (!usernameValidator.hasValue) {
-        usernameValidator.alert();
+        usernameValidator.alertHasNoValue();
         usernameValidator.focus();
       }
     };
