@@ -34,7 +34,8 @@ export class UseValidator {
     return !!this.validValue;
   }
 
-  public validate(value: string) {
+  public validate() {
+    const value = this.refs.inputRef.value;
     this.setIsValid(value);
     this.setValue(value);
   }
