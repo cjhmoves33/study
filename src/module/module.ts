@@ -1,4 +1,4 @@
-import { ValidationMap, ValidationType } from '@/types';
+import { ValidationMap, ValidationType } from '@/module/types';
 
 export const getValidationRule = (type: ValidationType) => {
   const validationMap: ValidationMap = {

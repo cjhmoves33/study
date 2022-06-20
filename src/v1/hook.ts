@@ -1,4 +1,4 @@
-import { ValidationPlanInstance } from '@/builder/validatorBuilder';
+import { ValidationPlanInstance } from '@/v1/validatorBuilder';
 
 export class UseValidator {
   private readonly validationPlan;

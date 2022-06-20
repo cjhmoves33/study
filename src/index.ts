@@ -1,7 +1,7 @@
 // builder
 import { ValidationPlanBuilder } from '@/v4/validatorBuilderV4';
 // modules
-import { getValidationRule } from '@/module';
+import { getValidationRule } from '@/module/module';
 // hooks
 import { UseValidator } from '@/v4/hook';
 

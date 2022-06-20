@@ -8,10 +8,10 @@ export interface ValidationRule {
   maxLengthMessage: string;
   requireMessage: string;
 }
-export interface ValidationRefs {
-  inputRef: HTMLInputElement;
-  invalidMessageRef?: HTMLSpanElement;
-}
+// export interface ValidationRefs {
+//   inputRef: HTMLInputElement;
+//   invalidMessageRef?: HTMLSpanElement;
+// }
 
 // export interface InputConstructor {
 //   validationType: ValidationType;
