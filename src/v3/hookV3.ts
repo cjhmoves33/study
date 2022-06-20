@@ -1,5 +1,4 @@
-import { ValidationPlanV3Instance } from '@/builder/validatorBuilderV3';
-import { ValidationRefs, ValidationRule } from '@/types';
+import { ValidationRefs, ValidationRule, Plan } from '@/v3/type';
 
 export class UseValidator {
   private __Rule__!: ValidationRule;
@@ -8,7 +7,7 @@ export class UseValidator {
   private isValid = true;
   private validValue = '';
 
-  constructor(validationPlan: ValidationPlanV3Instance) {
+  constructor(validationPlan: Plan) {
     this.__Rule__ = validationPlan.rule;
     this.__Refs__ = validationPlan.refs;
   }

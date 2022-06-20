@@ -1,20 +1,6 @@
-import { ValidationRule, ValidationRefs } from '@/types';
+import { ValidationRule, ValidationRefs, PlanBuilder, Plan } from '@/v3/type';
 
 export type ValidationPlanV3Instance = InstanceType<typeof ValidationPlan>;
-
-interface PlanBuilder {
-  rule: ValidationRule;
-  refs: ValidationRefs;
-  setRule(rule: ValidationRule): PlanBuilder;
-  setRefs(refs: ValidationRefs): PlanBuilder;
-  build(): InstanceType<typeof ValidationPlan>;
-}
-
-interface Plan {
-  rule: ValidationRule;
-  refs: ValidationRefs;
-  log(): void;
-}
 // ************* Validator *************
 
 class ValidationPlan implements Plan {
