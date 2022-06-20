@@ -1,5 +1,3 @@
-// export type ValidationPlanV3Instance = InstanceType<typeof ValidationPlan>;
-
 interface ValidationRefs {
   inputRef: HTMLInputElement;
   invalidValueMessageRef?: HTMLSpanElement;
@@ -8,48 +6,48 @@ interface ValidationRefs {
 interface ValidationRule {
   pattern: RegExp;
   maxLength: number;
-  invalidMessage?: string;
+  invalidValueMessage?: string;
   requireMessage?: string;
 }
 
-interface Rule {
-  pattern: RegExp;
-  maxLength: number;
-  invalidMessage?: string;
-  requireMessage?: string;
-}
+// interface Rule {
+//   pattern: RegExp;
+//   maxLength: number;
+//   invalidMessage?: string;
+//   requireMessage?: string;
+// }
 interface Refs {
   inputRef: HTMLInputElement;
   invalidValueMessageRef?: HTMLSpanElement;
 }
 
-interface PlanBuilder {
-  rule: InstanceType<typeof RuleBuilder>;
-  refs: InstanceType<typeof RefsBuilder>;
-  // build(): InstanceType<typeof ValidationPlan>;
-}
+// interface PlanBuilder {
+//   rule: InstanceType<typeof RuleBuilder>;
+//   refs: InstanceType<typeof RefsBuilder>;
+//   // build(): InstanceType<typeof ValidationPlan>;
+// }
 
 // ************* Plan *************
 
-class RulePlan implements Rule {
-  private readonly __pattern__!: RegExp;
-  private readonly __maxLength__!: number;
-  private readonly __invalidMessage__?: string;
-  private readonly __requireMessage__?: string;
+// class RulePlan implements Rule {
+//   private readonly __pattern__!: RegExp;
+//   private readonly __maxLength__!: number;
+//   private readonly __invalidMessage__?: string;
+//   private readonly __requireMessage__?: string;
 
-  get pattern() {
-    return this.__pattern__;
-  }
-  get maxLength() {
-    return this.__maxLength__;
-  }
-  get invalidMessage() {
-    return this.__invalidMessage__;
-  }
-  get requireMessage() {
-    return this.__requireMessage__;
-  }
-}
+//   get pattern() {
+//     return this.__pattern__;
+//   }
+//   get maxLength() {
+//     return this.__maxLength__;
+//   }
+//   get invalidMessage() {
+//     return this.__invalidMessage__;
+//   }
+//   get requireMessage() {
+//     return this.__requireMessage__;
+//   }
+// }
 
 class RefsPlan implements Refs {
   private readonly __inputRef__!: HTMLInputElement;
@@ -65,33 +63,33 @@ class RefsPlan implements Refs {
 
 // ************* sub builder *************
 
-class RuleBuilder {
-  private __Rule__;
+// class RuleBuilder {
+//   private __Rule__;
 
-  constructor(rule: ValidationRule) {
-    this.__Rule__ = rule;
-  }
+//   constructor(rule: ValidationRule) {
+//     this.__Rule__ = rule;
+//   }
 
-  public pattern(pattern: RegExp) {
-    this.__Rule__.pattern = pattern;
-    return this;
-  }
+//   public pattern(pattern: RegExp) {
+//     this.__Rule__.pattern = pattern;
+//     return this;
+//   }
 
-  public maxLength(maxLength: number) {
-    this.__Rule__.maxLength = maxLength;
-    return this;
-  }
+//   public maxLength(maxLength: number) {
+//     this.__Rule__.maxLength = maxLength;
+//     return this;
+//   }
 
-  public invalidValueMessage(message: string) {
-    this.__Rule__.invalidMessage = message;
-    return this;
-  }
+//   public invalidValueMessage(message: string) {
+//     this.__Rule__.invalidMessage = message;
+//     return this;
+//   }
 
-  public requireMessage(message: string) {
-    this.__Rule__.requireMessage = message;
-    return this;
-  }
-}
+//   public requireMessage(message: string) {
+//     this.__Rule__.requireMessage = message;
+//     return this;
+//   }
+// }
 
 class RefsBuilder {
   private __Refs__;
@@ -113,13 +111,33 @@ class RefsBuilder {
 
 // ************* Builder *************
 
-export class ValidationPlanBuilder implements PlanBuilder {
+export class ValidationPlanBuilder {
   private __Rule__!: ValidationRule;
   private __Refs__!: ValidationRefs;
 
   get rule() {
-    this.__Rule__ = new RulePlan();
-    return new RuleBuilder(this.__Rule__);
+    const ruleSet = {
+      pattern: (pattern: RegExp) => {
+        this.__Rule__.pattern = pattern;
+        return ruleSet;
+      },
+      maxLength: (maxLength: number) => {
+        this.__Rule__.maxLength = maxLength;
+        return ruleSet;
+      },
+      invalidValueMessage: (message: string) => {
+        this.__Rule__.invalidValueMessage = message;
+      },
+      requireMessage: (message: string) => {
+        this.__Rule__.requireMessage = message;
+        return this;
+      },
+      done: () => {
+        return this;
+      },
+    };
+
+    return ruleSet;
   }
 
   get refs() {
