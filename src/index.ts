@@ -1,11 +1,9 @@
 // builder
-// import { ValidationPlanBuilder } from '@/builder/validatorBuilder';
-// import { ValidationPlanBuilderV2 } from '@/builder/validatorBuilderV2';
-import { ValidationPlanBuilder } from '@/builder/validatorBuilderV3';
+import { ValidationPlanBuilder } from '@/v4/validatorBuilderV4';
 // modules
 import { getValidationRule } from '@/module';
 // hooks
-import { UseValidator } from '@/hooks/hookV3';
+import { UseValidator } from '@/v4/hook';
 
 class App {
   // private ajaxCall() {
@@ -20,7 +18,7 @@ class App {
       'input[type=text][name=username]'
     ) as HTMLInputElement;
 
-    const usernameInvalidMessageRef = document.querySelector(
+    const usernameInvalidValueMessageRef = document.querySelector(
       '#username-invalid-notice'
     ) as HTMLSpanElement;
 
@@ -28,17 +26,16 @@ class App {
     const usernameRule = getValidationRule('username');
 
     // 3. 유효성검사 플랜 제작
-    const usernameValidationPlan = new ValidationPlanBuilder()
-      .setRule({
-        pattern: usernameRule.pattern,
-        maxLength: usernameRule.maxLength,
-        invalidMessage: usernameRule.invalidMessage,
-        requireMessage: usernameRule.requireMessage,
-      })
-      .setRefs({
-        inputRef: usernameRef,
-        invalidMessageRef: usernameInvalidMessageRef,
-      })
+    const usernameValidationPlan = new ValidationPlanBuilder().rule
+      .pattern(usernameRule.pattern)
+      .maxLength(usernameRule.maxLength)
+      .invalidValueMessage(usernameRule.invalidMessage)
+      .requireMessage(usernameRule.requireMessage)
+      .maxLengthMessage(usernameRule.maxLengthMessage)
+      .next()
+      .refs.inputRef(usernameRef)
+      .invalidValueMessageRef(usernameInvalidValueMessageRef)
+      .next()
       .build();
 
     // 4. 유효성검사 플랜에 맞는 검사기(hook) 제작
@@ -46,14 +43,14 @@ class App {
 
     // 5. [input 입력시] 검사기로 유효성검사 및 Input에 유효한 값 입력.
     usernameRef.oninput = () => {
-      usernameValidator.validate();
+      usernameValidator.startValidation();
     };
 
     // 5. [form 제출시] 검사기로 값 여부 확인 및 포커싱(필수입력 값일 시)
     form.onsubmit = e => {
       e.preventDefault();
       if (!usernameValidator.hasValue) {
-        usernameValidator.alertHasNoValue();
+        usernameValidator.alertHasNoRequiredValue();
         usernameValidator.focus();
       }
     };

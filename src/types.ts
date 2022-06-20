@@ -4,8 +4,9 @@ export type ValidationMap = Record<ValidationType, ValidationRule>;
 export interface ValidationRule {
   pattern: RegExp;
   maxLength: number;
-  invalidMessage?: string;
-  requireMessage?: string;
+  invalidMessage: string;
+  maxLengthMessage: string;
+  requireMessage: string;
 }
 export interface ValidationRefs {
   inputRef: HTMLInputElement;
