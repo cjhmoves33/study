@@ -11,7 +11,9 @@ export interface ValidationRule {
   requireMessage: string;
 }
 
-export interface Plan extends ValidationRule, ValidationRefs {}
+export interface Plan
+  extends Readonly<ValidationRule>,
+    Readonly<ValidationRefs> {}
 
 export interface PlanBuilder {
   rule: RuleMap;

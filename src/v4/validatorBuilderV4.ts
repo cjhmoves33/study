@@ -46,6 +46,7 @@ class ValidationPlan implements Plan {
   public get invalidValueMessage() {
     return this.__invalidValueMessage__;
   }
+
   public get maxLengthMessage() {
     return this.__maxLengthMessage__;
   }
