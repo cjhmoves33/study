@@ -15,11 +15,11 @@ class App {
     const form = document.querySelector('form') as HTMLFormElement;
 
     const usernameRef = document.querySelector(
-      'input[type=text][name=username]'
+      'input[type=text][id=username-input]'
     ) as HTMLInputElement;
 
     const usernameInvalidValueMessageRef = document.querySelector(
-      '#username-invalid-notice'
+      'span[id=username-invalid-value-message]'
     ) as HTMLSpanElement;
 
     // 2. 'username'에 해당하는 유효성검사 규칙 가져오기
