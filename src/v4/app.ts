@@ -1,7 +1,7 @@
 // builder
 import { ValidationPlanBuilder } from '@/v4/validatorBuilderV4';
 // modules
-import { getValidationRule } from '@/module/module';
+import { getValidationRule, getValidationInputs } from '@/module/module';
 // hooks
 import { UseValidator } from '@/v4/hook';
 
@@ -13,14 +13,8 @@ class App {
   private bindEvent() {
     // 1. HTM 요소 가져오기 (form, input, span)
     const form = document.querySelector('form') as HTMLFormElement;
-
-    const usernameRef = document.querySelector(
-      'input[type=text][id=username-input]'
-    ) as HTMLInputElement;
-
-    const usernameInvalidValueMessageRef = document.querySelector(
-      'span[id=username-invalid-value-message]'
-    ) as HTMLSpanElement;
+    const [usernameRef, usernameInvalidValueMessageRef] =
+      getValidationInputs('username');
 
     // 2. 'username'에 해당하는 유효성검사 규칙 가져오기
     const usernameRule = getValidationRule('username');
