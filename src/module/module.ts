@@ -5,7 +5,7 @@ export const getValidationRule = (type: ValidationType) => {
     username: {
       pattern: /[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]/g,
       maxLength: 10,
-      invalidMessage: '이름 똑바로 입렵하셈',
+      invalidMessage: '이름은 영대소, 숫자, 한글만 입력가능합니다.',
       maxLengthMessage: '이름은 최대 10글자입니다.',
       requireMessage: '이름 필수 입력임',
     },
