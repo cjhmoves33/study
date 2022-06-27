@@ -11,13 +11,16 @@ class App {
   // }
 
   private bindEvent() {
+    const USER_NAME = 'username';
+
     // 1. HTM 요소 가져오기 (form, input, span)
     const form = document.querySelector('form') as HTMLFormElement;
+
     const [usernameRef, usernameInvalidValueMessageRef] =
-      getValidationInputs('username');
+      getValidationInputs(USER_NAME);
 
     // 2. 'username'에 해당하는 유효성검사 규칙 가져오기
-    const usernameRule = getValidationRule('username');
+    const usernameRule = getValidationRule(USER_NAME);
 
     // 3. 유효성검사 플랜 제작
     const usernameValidationPlan = new ValidationPlanBuilder().rule
