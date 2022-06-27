@@ -13,7 +13,7 @@ class App {
   private bindEvent() {
     const USER_NAME = 'username';
 
-    // 1. HTM 요소 가져오기 (form, input, span)
+    // 1. HTML 요소 가져오기 (form, input, span)
     const form = document.querySelector('form') as HTMLFormElement;
 
     const [usernameRef, usernameInvalidValueMessageRef] =
