@@ -37,7 +37,7 @@ class App {
 
     // 5. [input 입력시] 검사기로 유효성검사 및 Input에 유효한 값 입력.
     usernameRef.oninput = () => {
-      usernameValidator.startValidation();
+      usernameValidator.validation();
     };
 
     // 5. [form 제출시] 검사기로 값 여부 확인 및 포커싱(필수입력 값일 시)

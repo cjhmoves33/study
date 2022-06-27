@@ -72,7 +72,7 @@ export class UseValidator {
     }
   }
 
-  public startValidation() {
+  public validation() {
     this.setIsValid(this.value);
     this.setIsMaxLengthExceeded(false);
 
