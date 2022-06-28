@@ -1,0 +1,68 @@
+<!-- 자바스크립트로 Lazy Loading -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  // console.log(document.readyState) -> loading
+  // const lazyLoadImages = document.querySelectorAll('img.lazy');
+  // console.log(lazyLoadImages); -> 빈배열
+</script>
+<body>
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+</body>
+<script>
+  // window.addEventListener('load', (event) => {
+  //   console.log('load: ', document.readyState)
+  // });
+
+  // if(document.readyState === 'loading') {
+  //   console.log('readystatechange: ', document.readyState)
+  //   const lazyLoadImages = document.querySelectorAll('img.lazy');
+  //   console.log(lazyLoadImages);
+  // }
+  
+  // document.addEventListener('readystatechange', (event) => {
+  //   console.log('readystatechange: ', document.readyState)
+  // });
+  
+  // document.addEventListener('DOMContentLoaded', (event) => {
+  //   const lazyLoadImages = document.querySelectorAll('img.lazy');
+  //   console.log('--- DOMContentLoaded ---');
+  //   console.log(lazyLoadImages);
+  //   console.log('------------------------');
+  // });
+
+  // setTimeout(() => {console.log('-- readystate -- ', document.readyState)}, 0)
+  // setTimeout(() => {console.log('-- readystate -- ', document.readyState)}, 10)
+
+  // const lazyLoadImages = document.querySelectorAll('img.lazy');
+  // console.log(lazyLoadImages);
+
+  const switching = () => {
+    switch (document.readyState) {
+      case 'loading':
+        console.log('loading');
+        break;
+      case 'interactive':
+        console.log('interactive');
+        break;
+      case 'complete':
+        console.log('complete');
+        break;
+    }
+  }
+  document.onreadystatechange = switching
+</script>
+</html>
