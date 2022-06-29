@@ -1,4 +1,4 @@
-<!-- 자바스크립트로 Lazy Loading -->
+<!-- DOM readyState -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <script>
-  // console.log(document.readyState) -> loading
+  console.log(document.readyState) // -> loading
   // const lazyLoadImages = document.querySelectorAll('img.lazy');
   // console.log(lazyLoadImages); -> 빈배열
 </script>
@@ -21,28 +21,19 @@
   <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
   <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
   <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
+  <script>
+    setTimeout(() => {
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('--- DOMContentLoaded11 ---');
+      });
+    }, 1000)
+    // DOMContentLoaded는 DOM이 완성된 후에는 호출되지 않는다.
+  </script>
 </body>
 <script>
-  // window.addEventListener('load', (event) => {
-  //   console.log('load: ', document.readyState)
-  // });
-  
-  // document.addEventListener('readystatechange', (event) => {
-  //   console.log('readystatechange: ', document.readyState)
-  // });
-  
-  // document.addEventListener('DOMContentLoaded', (event) => {
-  //   const lazyLoadImages = document.querySelectorAll('img.lazy');
-  //   console.log('--- DOMContentLoaded ---');
-  //   console.log(lazyLoadImages);
-  //   console.log('------------------------');
-  // });
-
-  // setTimeout(() => {console.log('-- readystate -- ', document.readyState)}, 0)
-  // setTimeout(() => {console.log('-- readystate -- ', document.readyState)}, 10)
-
-  // const lazyLoadImages = document.querySelectorAll('img.lazy');
-  // console.log(lazyLoadImages);
+  document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('--- DOMContentLoaded ---');
+  });
 
   const switching = () => {
     switch (document.readyState) {
@@ -57,6 +48,6 @@
         break;
     }
   }
-  document.onreadystatechange = switching
+  document.addEventListener('readystatechange', switching) // -> interactive => complete
 </script>
 </html>
