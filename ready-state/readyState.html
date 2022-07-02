@@ -1,4 +1,4 @@
-<!-- DOM readyState -->
+<!-- DOM readyState 간단한 정리 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <script>
-  console.log(document.readyState) // -> loading
+  console.log('여기가 가장 먼저.', document.readyState) // -> loading
   // const lazyLoadImages = document.querySelectorAll('img.lazy');
   // console.log(lazyLoadImages); -> 빈배열
 </script>
@@ -23,31 +23,18 @@
   <img class="lazy" style="width: 350px;" src="https://ik.imagekit.io/demo/default-image.jpg" />
   <script>
     setTimeout(() => {
-      document.addEventListener('DOMContentLoaded', (event) => {
-        console.log('--- DOMContentLoaded11 ---');
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded는 DOM이 완성된 후에는 호출되지 않는다.')
       });
     }, 1000)
-    // DOMContentLoaded는 DOM이 완성된 후에는 호출되지 않는다.
   </script>
 </body>
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', () => {
     console.log('--- DOMContentLoaded ---');
   });
 
-  const switching = () => {
-    switch (document.readyState) {
-      case 'loading':
-        console.log('loading');
-        break;
-      case 'interactive':
-        console.log('interactive');
-        break;
-      case 'complete':
-        console.log('complete');
-        break;
-    }
-  }
+  const switching = () => console.log('dom ready state -> ', document.readyState)
   document.addEventListener('readystatechange', switching) // -> interactive => complete
 </script>
 </html>
