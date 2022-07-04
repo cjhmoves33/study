@@ -19,8 +19,8 @@
   "homepage": "https://github.com/cjhmoves33/lazy-loading#readme",
   "lint-staged": {
     "src/**/.ts": [
-      "eslint --fix",
-      "prettier --check"
+      "prettier --check",
+      "eslint --fix"
     ]
   },
   "devDependencies": {
