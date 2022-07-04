@@ -23,6 +23,11 @@
       "prettier --check"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",

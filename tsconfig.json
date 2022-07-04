@@ -86,7 +86,7 @@
     // "useUnknownInCatchVariables": true,               /* Type catch clause variables as 'unknown' instead of 'any'. */
     // "alwaysStrict": true,                             /* 엄격모드에서 구문 분석 후, 각 소스 파일에 "use strict" 코드를 출력. */
     // "noUnusedLocals": true,                           /* 사용되지 않은 로컬이 있을 경우, 오류로 보고. */
-    // "noUnusedParameters": true,                       /* 사용되지 않은 매개변수가 있을 경우, 오류로 보고 */
+    "noUnusedParameters": true,                       /* 사용되지 않은 매개변수가 있을 경우, 오류로 보고 */
     // "exactOptionalPropertyTypes": true,               /* Interpret optional property types as written, rather than adding 'undefined'. */
     // "noImplicitReturns": true,                        /* 함수가 값을 반환하지 않을 경우, 오류로 보고. */
     // "noFallthroughCasesInSwitch": true,               /* switch 문 오류 유형에 대한 오류 보고. */
