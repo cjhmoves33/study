@@ -17,9 +17,13 @@
     "url": "https://github.com/cjhmoves33/lazy-loading/issues"
   },
   "homepage": "https://github.com/cjhmoves33/lazy-loading#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "src/**/*": "prettier --write",
-    "src/**/*.ts": "eslint --fix"
+    "src/**/*.ts": ["eslint --fix"]
   },
   "devDependencies": {
     "eslint": "^8.19.0",
