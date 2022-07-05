@@ -1,22 +1,22 @@
 class CustomImages extends HTMLElement {
-  #wrapper = document.createElement("div");
-  #img = document.createElement("img");
-  #text = document.createElement("p");
+  private wrapper = document.createElement("div");
+  private img = document.createElement("img");
+  private text = document.createElement("p");
 
   constructor() {
     super(); // 반드시 super를 호출해야한다.
     this.attachShadow({ mode: "open" });
     // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
 
-    this.#text.innerText = "hello world";
+    this.text.innerText = "hello world";
 
-    this.#img.src = "https://ik.imagekit.io/demo/default-image.jpg";
-    this.#img.style.width = "200px";
+    this.img.src = "https://ik.imagekit.io/demo/default-image.jpg";
+    this.img.style.width = "200px";
 
-    this.#wrapper.appendChild(this.#img);
-    this.#wrapper.appendChild(this.#text);
+    this.wrapper.appendChild(this.img);
+    this.wrapper.appendChild(this.text);
 
-    this.shadowRoot?.appendChild(this.#wrapper);
+    this.shadowRoot?.appendChild(this.wrapper);
   }
 
   // 생명주기 콜백
@@ -33,9 +33,9 @@ class CustomImages extends HTMLElement {
     console.log("disconnectedCallback");
   }
 
-  adoptedCAllback() {
+  adoptedCallback() {
     // 사용자 정의 요소가 새로운 document로 이동되었을 때마다 호출.
-    console.log("adoptedCAllback");
+    console.log("adoptedCallback");
   }
 
   attributeChangedCallback() {
