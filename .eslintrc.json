@@ -19,7 +19,8 @@
     ],
     "ignorePatterns": [
         "node_modules/",
-        ".*/**/*"
+        ".*/**/*",
+        "*.config.js"
     ],
     "rules": {
         "prettier/prettier": "error"
