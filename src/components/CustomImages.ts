@@ -1,6 +1,8 @@
 class CustomImages extends HTMLElement {
   private wrapper = document.createElement("div");
+
   private img = document.createElement("img");
+
   private text = document.createElement("p");
 
   constructor() {

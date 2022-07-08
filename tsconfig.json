@@ -25,11 +25,11 @@
 
     /* Modules */
     "module": "commonjs" /* 생성될 모듈 코드 설정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
-    // "rootDir": "./",                                  /* 입력 파일들의 루트 디렉토리 설정. --outDir 옵션을 사용해 출력 디렉토리 설정이 가능. */
+    // "rootDir": "src",                                  /* 입력 파일들의 루트 디렉토리 설정. --outDir 옵션을 사용해 출력 디렉토리 설정이 가능. */
     // "moduleResolution": "node",                       /* 모듈 분석 방법 설정: 'node' (Node.js) 또는 'classic' (TypeScript pre-1.6). */
     "baseUrl": "src" /* 절대 경로 모듈이 아닌, 모듈이 기본적으로 위치한 디렉토리 설정 (예: './modules-name'). */,
     "paths": {
-      "@/*": ["/*"]
+      "@/*": ["./*"]
     } /* 'baseUrl'을 기준으로 상대 위치로 가져오기를 다시 매핑하는 항목 설정 */,
     // "rootDirs": [],                                   /* 런타임 시 프로젝트 구조를 나타내는 로트 디렉토리 목록. */
     // "typeRoots": [],                                  /* 유형 정의를 포함할 디렉토리 목록`./node_modules/@types`. */
