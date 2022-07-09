@@ -7,14 +7,34 @@ class CustomImages extends HTMLElement {
     // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
 
     // this.shadowRoot?.appendChild(this.wrapper);
-    // this.appendChild(this.wrapper);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // console.log(document.querySelectorAll("img.lazy"));
+      let lazyLoadThrottleTimeout: ReturnType<typeof setTimeout>;
+
+      const lazyLoad = () => {
+        console.log("scrolling!");
+        if (lazyLoadThrottleTimeout) {
+          clearTimeout(lazyLoadThrottleTimeout);
+        }
+        lazyLoadThrottleTimeout = setTimeout(() => {
+          const scrollTop = window.scrollY;
+          console.log(scrollTop);
+        }, 500);
+      };
+      document.addEventListener("scroll", lazyLoad);
+    });
   }
 
-  private initImage(imageSize: string, imageRange: number) {
-    for (let i = 0; i <= imageRange; i++) {
+  private initImage() {
+    const imageSize = this.getAttribute("image-size") as string;
+    const imageRange = this.getAttribute("range") as string;
+
+    for (let i = 0; i <= Number(imageRange); i++) {
       const img = document.createElement("img");
 
       img.id = i.toString();
+      img.classList.add("lazy");
       img.src = "https://ik.imagekit.io/demo/default-image.jpg";
       img.style.width = imageSize;
 
@@ -25,13 +45,11 @@ class CustomImages extends HTMLElement {
   // 생명주기 콜백
   connectedCallback() {
     // 사용자 정의 요소가 문서에 연결된 요소에 추가될 때마다 호출.
-    // 이것은 노드가 이동될 때마다 발생할 것이며, 요소의 내용이 완전히 해석되기 전에 발생할 지도 모름.
+    // 이것은 노드가 이동될 때마다 발생할 것이며, 요소의 내용이 "완전히 해석되기 전"에 발생할 지도 모름.
     // connectedCallback은 요소가 더 이상 연결되지 않았을 떄 호출될 수도 있으므로, 확실하게 하기위해선 Node.isConnected를 사용해야함.
     this.appendChild(this.wrapper);
 
-    const imageSize = this.getAttribute("image-size") as string;
-    const imageRange = this.getAttribute("range") as string;
-    this.initImage(imageSize, Number(imageRange));
+    this.initImage();
   }
 
   disconnectedCallback() {
