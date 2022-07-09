@@ -1,3 +1,3 @@
-export default document.addEventListener("readystatechange", () => {
-  console.log("dom ready state1 -> ", document.readyState);
+document.addEventListener("readystatechange", () => {
+  console.log("dom ready state1-> ", document.readyState);
 });

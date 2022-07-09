@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "transpile": "swc ./src -d src/js",
+    "transpile": "swc ./src -d src/js -w",
     "reset": "rm -rf src/js"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "@swc/core": "^1.2.210",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
+    "chokidar": "^3.5.3",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
