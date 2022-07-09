@@ -1,24 +1,25 @@
 class CustomImages extends HTMLElement {
   private wrapper = document.createElement("div");
 
-  private img = document.createElement("img");
-
-  private text = document.createElement("p");
-
   constructor() {
     super(); // 반드시 super를 호출해야한다.
-    this.attachShadow({ mode: "open" });
+    // this.attachShadow({ mode: "open" });
     // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
 
-    this.text.innerText = "hello world";
+    // this.shadowRoot?.appendChild(this.wrapper);
+    // this.appendChild(this.wrapper);
+  }
 
-    this.img.src = "https://ik.imagekit.io/demo/default-image.jpg";
-    this.img.style.width = "200px";
+  private initImage(imageSize: string, imageRange: number) {
+    for (let i = 0; i <= imageRange; i++) {
+      const img = document.createElement("img");
 
-    this.wrapper.appendChild(this.img);
-    this.wrapper.appendChild(this.text);
+      img.id = i.toString();
+      img.src = "https://ik.imagekit.io/demo/default-image.jpg";
+      img.style.width = imageSize;
 
-    this.shadowRoot?.appendChild(this.wrapper);
+      this.wrapper.appendChild(img);
+    }
   }
 
   // 생명주기 콜백
@@ -26,8 +27,11 @@ class CustomImages extends HTMLElement {
     // 사용자 정의 요소가 문서에 연결된 요소에 추가될 때마다 호출.
     // 이것은 노드가 이동될 때마다 발생할 것이며, 요소의 내용이 완전히 해석되기 전에 발생할 지도 모름.
     // connectedCallback은 요소가 더 이상 연결되지 않았을 떄 호출될 수도 있으므로, 확실하게 하기위해선 Node.isConnected를 사용해야함.
-    console.log("connectedCallback");
-    console.log(this.getAttribute("range"));
+    this.appendChild(this.wrapper);
+
+    const imageSize = this.getAttribute("image-size") as string;
+    const imageRange = this.getAttribute("range") as string;
+    this.initImage(imageSize, Number(imageRange));
   }
 
   disconnectedCallback() {
@@ -47,8 +51,8 @@ class CustomImages extends HTMLElement {
   }
 }
 
-function __init__() {
+function __createCustomElement__() {
   customElements.define("custom-images", CustomImages);
 }
 
-__init__();
+__createCustomElement__();

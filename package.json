@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "transpile": "swc ./src -d src/js -w",
+    "start": "swc ./src -d src/js -w",
+    "transpile": "swc ./src -d src/js",
     "reset": "rm -rf src/js"
   },
   "repository": {
