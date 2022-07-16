@@ -3,24 +3,30 @@ class CustomImages extends HTMLElement {
 
   constructor() {
     super(); // 반드시 super를 호출해야한다.
-    // this.attachShadow({ mode: "open" });
-    // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
 
+    // this.attachShadow({ mode: "open" }); // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
     // this.shadowRoot?.appendChild(this.wrapper);
 
     document.addEventListener("DOMContentLoaded", () => {
-      // console.log(document.querySelectorAll("img.lazy"));
-      let lazyLoadThrottleTimeout: ReturnType<typeof setTimeout>;
+      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
+      let lazyLoadThrottle: ReturnType<typeof setTimeout>;
 
       const lazyLoad = () => {
-        console.log("scrolling!");
-        if (lazyLoadThrottleTimeout) {
-          clearTimeout(lazyLoadThrottleTimeout);
-        }
-        lazyLoadThrottleTimeout = setTimeout(() => {
-          const scrollTop = window.scrollY;
-          console.log(scrollTop);
-        }, 500);
+        if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
+
+        lazyLoadThrottle = setTimeout(() => {
+          lazyImgs.forEach(img => {
+            const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
+            const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
+            const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값.
+
+            console.log("image offset top", imgTop);
+            console.log("window innerHeight", viewportHeight);
+            console.log("window scroll Y", scrollY);
+            console.log("--------------------");
+          });
+          // console.log(scrollTop);
+        }, 50);
       };
       document.addEventListener("scroll", lazyLoad);
     });
