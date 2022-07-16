@@ -28,6 +28,19 @@ class CustomImages extends HTMLElement {
         });
       };
       document.addEventListener("scroll", lazyLoad);
+
+      const scrollY = window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const viewport = scrollY + viewportHeight;
+
+      const viewImages = [...lazyImgs].filter(
+        img => img.offsetTop > scrollY && img.offsetTop < viewport
+      );
+
+      viewImages.forEach(img => {
+        img.src = img.dataset.src as string;
+        img.classList.remove("lazy");
+      });
     });
   }
 
