@@ -15,14 +15,13 @@ class CustomImages extends HTMLElement {
         if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
 
         lazyLoadThrottle = setTimeout(() => {
-          lazyImgs.forEach((img, key) => {
+          lazyImgs.forEach(img => {
             const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
             const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
             const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
 
             if (imgTop < scrollY + viewportHeight) {
-              console.log(key + "   hi there!");
-              // img.src = img.dataset.src as string;
+              img.src = img.dataset.src as string;
               img.classList.remove("lazy");
             }
           }, 50);
@@ -37,14 +36,14 @@ class CustomImages extends HTMLElement {
     const imageRange = this.getAttribute("range") as string;
 
     for (let i = 0; i <= Number(imageRange); i++) {
-      const img = document.createElement("img");
+      const lazyImage = document.createElement("img");
 
-      img.id = i.toString();
-      img.classList.add("lazy");
-      img.src = "https://ik.imagekit.io/demo/default-image.jpg";
-      img.style.width = imageSize;
+      lazyImage.classList.add("lazy");
+      lazyImage.dataset.src = "https://ik.imagekit.io/demo/default-image.jpg";
+      lazyImage.style.width = imageSize;
+      lazyImage.style.height = "600px";
 
-      this.wrapper.appendChild(img);
+      this.wrapper.appendChild(lazyImage);
     }
   }
 
@@ -54,7 +53,6 @@ class CustomImages extends HTMLElement {
     // 이것은 노드가 이동될 때마다 발생할 것이며, 요소의 내용이 "완전히 해석되기 전"에 발생할 지도 모름.
     // connectedCallback은 요소가 더 이상 연결되지 않았을 떄 호출될 수도 있으므로, 확실하게 하기위해선 Node.isConnected를 사용해야함.
     this.appendChild(this.wrapper);
-
     this.initImage();
   }
 
