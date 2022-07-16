@@ -40,7 +40,7 @@
 
     /* JavaScript Support */
     // "allowJs": true,                                  /* JavaScript 파일 컴파일 허용 */
-    // "checkJs": true,                                  /* .js 파일 오류 리포트 설정. */
+    // "checkJs": false,                                  /* .js 파일 오류 리포트 설정. */
     // "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from `node_modules`. Only applicable with `allowJs`. */
 
     /* Emit */
@@ -101,5 +101,5 @@
     "skipLibCheck": true /* 선언 파일 유형 검사 스킵. */
   },
   "include": ["**/*.ts"],
-  "exclude": ["**/*.d.ts"]
+  "exclude": ["**/*.d.ts", "src/js/**/*.js"]
 }

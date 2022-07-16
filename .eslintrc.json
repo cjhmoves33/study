@@ -20,7 +20,8 @@
     "ignorePatterns": [
         "node_modules/",
         ".*/**/*",
-        "*.config.js"
+        "*.config.js",
+        "src/js/**/*.js"
     ],
     "rules": {
         "prettier/prettier": "error"

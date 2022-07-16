@@ -8,25 +8,25 @@ class CustomImages extends HTMLElement {
     // this.shadowRoot?.appendChild(this.wrapper);
 
     document.addEventListener("DOMContentLoaded", () => {
-      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
+      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy"); // NodeListOf<T>
       let lazyLoadThrottle: ReturnType<typeof setTimeout>;
 
       const lazyLoad = () => {
         if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
 
         lazyLoadThrottle = setTimeout(() => {
-          lazyImgs.forEach(img => {
+          lazyImgs.forEach((img, key) => {
             const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
             const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
-            const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값.
+            const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
 
-            console.log("image offset top", imgTop);
-            console.log("window innerHeight", viewportHeight);
-            console.log("window scroll Y", scrollY);
-            console.log("--------------------");
-          });
-          // console.log(scrollTop);
-        }, 50);
+            if (imgTop < scrollY + viewportHeight) {
+              console.log(key + "   hi there!");
+              // img.src = img.dataset.src as string;
+              img.classList.remove("lazy");
+            }
+          }, 50);
+        });
       };
       document.addEventListener("scroll", lazyLoad);
     });
