@@ -15,21 +15,13 @@ class CustomImages extends HTMLElement {
         if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
 
         lazyLoadThrottle = setTimeout(() => {
-          lazyImgs.forEach(img => {
-            const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
-            const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
-            const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
-
-            if (imgTop < scrollY + viewportHeight) {
-              img.src = img.dataset.src as string;
-              img.classList.remove("lazy");
-            }
-          }, 50);
-        });
+          lazyImgs.forEach(this.setImageSrc);
+        }, 10);
       };
+
       document.addEventListener("scroll", lazyLoad);
       document.addEventListener("resize", lazyLoad);
-      document.addEventListener("orientationChange", lazyLoad);
+      screen.orientation.addEventListener("change", lazyLoad); // https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation#browser_compatibility
 
       const scrollY = window.pageYOffset;
       const viewportHeight = window.innerHeight;
@@ -59,6 +51,18 @@ class CustomImages extends HTMLElement {
       lazyImage.style.height = "600px";
 
       this.wrapper.appendChild(lazyImage);
+    }
+  }
+
+  private setImageSrc(img: HTMLImageElement) {
+    const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
+    const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
+    const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
+
+    console.log(imgTop);
+    if (imgTop < scrollY + viewportHeight) {
+      img.src = img.dataset.src as string;
+      img.classList.remove("lazy");
     }
   }
 
