@@ -28,6 +28,8 @@ class CustomImages extends HTMLElement {
         });
       };
       document.addEventListener("scroll", lazyLoad);
+      document.addEventListener("resize", lazyLoad);
+      document.addEventListener("orientationChange", lazyLoad);
 
       const scrollY = window.pageYOffset;
       const viewportHeight = window.innerHeight;
