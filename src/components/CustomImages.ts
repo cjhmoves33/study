@@ -22,7 +22,10 @@ class CustomImages extends HTMLElement {
       document.addEventListener("scroll", lazyLoad);
       document.addEventListener("resize", lazyLoad);
       screen.orientation.addEventListener("change", lazyLoad); // https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation#browser_compatibility
+    });
 
+    window.addEventListener("DOMContentLoaded", () => {
+      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
       const scrollY = window.pageYOffset;
       const viewportHeight = window.innerHeight;
       const viewport = scrollY + viewportHeight;
@@ -59,7 +62,6 @@ class CustomImages extends HTMLElement {
     const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
     const imgTop = img.offsetTop; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
 
-    console.log(imgTop);
     if (imgTop < scrollY + viewportHeight) {
       img.src = img.dataset.src as string;
       img.classList.remove("lazy");
