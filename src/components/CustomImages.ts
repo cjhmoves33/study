@@ -39,6 +39,9 @@ class CustomImages extends HTMLElement {
     const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy"); // NodeListOf<T>
 
     let lazyLoadThrottle: ReturnType<typeof setTimeout>;
+    // CustomImages.bind(this);
+    // console.log(this);
+    // this 값이 왜 document인지 알아내야함
 
     const lazyLoad = () => {
       if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
