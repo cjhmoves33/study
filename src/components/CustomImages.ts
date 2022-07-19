@@ -6,29 +6,6 @@ class CustomImages extends HTMLElement {
 
     // this.attachShadow({ mode: "open" }); // 'close'모드라면 'myCustomElem.shadowRoot'로 접근할 수 없다. 하지만 상당히 쉽게 우회가능.
     // this.shadowRoot?.appendChild(this.wrapper);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy"); // NodeListOf<T>
-
-      let lazyLoadThrottle: ReturnType<typeof setTimeout>;
-
-      const lazyLoad = () => {
-        if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
-
-        lazyLoadThrottle = setTimeout(() => {
-          lazyImgs.forEach(this.setImageSrc);
-        }, 10);
-      };
-
-      document.addEventListener("scroll", lazyLoad);
-      document.addEventListener("resize", lazyLoad);
-      screen.orientation.addEventListener("change", lazyLoad); // https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation#browser_compatibility
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
-      lazyImgs.forEach(this.setImageSrc);
-    });
   }
 
   private initImage() {
@@ -47,7 +24,7 @@ class CustomImages extends HTMLElement {
     }
   }
 
-  private setImageSrc(lazyImg: HTMLImageElement) {
+  static setImageSrc(lazyImg: HTMLImageElement) {
     const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
     const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
     const viewport = scrollY + viewportHeight; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
@@ -58,6 +35,29 @@ class CustomImages extends HTMLElement {
     }
   }
 
+  private setLazyLoadListener() {
+    const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy"); // NodeListOf<T>
+
+    let lazyLoadThrottle: ReturnType<typeof setTimeout>;
+
+    const lazyLoad = () => {
+      if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
+
+      lazyLoadThrottle = setTimeout(() => {
+        lazyImgs.forEach(CustomImages.setImageSrc);
+      }, 10);
+    };
+
+    document.addEventListener("scroll", lazyLoad);
+    document.addEventListener("resize", lazyLoad);
+    screen.orientation.addEventListener("change", lazyLoad); // https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation#browser_compatibility
+  }
+
+  private setImageInViewport() {
+    const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
+    lazyImgs.forEach(CustomImages.setImageSrc);
+  }
+
   // 생명주기 콜백
   connectedCallback() {
     // 사용자 정의 요소가 문서에 연결된 요소에 추가될 때마다 호출.
@@ -65,6 +65,9 @@ class CustomImages extends HTMLElement {
     // connectedCallback은 요소가 더 이상 연결되지 않았을 떄 호출될 수도 있으므로, 확실하게 하기위해선 Node.isConnected를 사용해야함.
     this.appendChild(this.wrapper);
     this.initImage();
+
+    document.addEventListener("DOMContentLoaded", this.setLazyLoadListener);
+    document.addEventListener("DOMContentLoaded", this.setImageInViewport);
   }
 
   disconnectedCallback() {
