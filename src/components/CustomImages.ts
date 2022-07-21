@@ -24,7 +24,7 @@ class CustomImages extends HTMLElement {
     }
   }
 
-  static setImageSrc(lazyImg: HTMLImageElement) {
+  private setImageSrc(lazyImg: HTMLImageElement) {
     const scrollY = window.pageYOffset; // 원점으로 부터 스크롤된 픽셀값.
     const viewportHeight = window.innerHeight; // 브라우저가 가지는 높이. 뷰포트 height;
     const viewport = scrollY + viewportHeight; // HTMLElement의 상단부가 해당페이지에서 가지는 y축값
@@ -39,15 +39,12 @@ class CustomImages extends HTMLElement {
     const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy"); // NodeListOf<T>
 
     let lazyLoadThrottle: ReturnType<typeof setTimeout>;
-    // CustomImages.bind(this);
-    // console.log(this);
-    // this 값이 왜 document인지 알아내야함
 
     const lazyLoad = () => {
       if (lazyLoadThrottle) clearTimeout(lazyLoadThrottle);
 
       lazyLoadThrottle = setTimeout(() => {
-        lazyImgs.forEach(CustomImages.setImageSrc);
+        lazyImgs.forEach(this.setImageSrc);
       }, 10);
     };
 
@@ -58,7 +55,7 @@ class CustomImages extends HTMLElement {
 
   private setImageInViewport() {
     const lazyImgs = document.querySelectorAll<HTMLImageElement>("img.lazy");
-    lazyImgs.forEach(CustomImages.setImageSrc);
+    lazyImgs.forEach(this.setImageSrc);
   }
 
   // 생명주기 콜백
@@ -69,8 +66,15 @@ class CustomImages extends HTMLElement {
     this.appendChild(this.wrapper);
     this.initImage();
 
-    document.addEventListener("DOMContentLoaded", this.setLazyLoadListener);
-    document.addEventListener("DOMContentLoaded", this.setImageInViewport);
+    document.addEventListener(
+      "DOMContentLoaded",
+      this.setLazyLoadListener.bind(this)
+    );
+    document.addEventListener(
+      "DOMContentLoaded",
+      this.setImageInViewport.bind(this)
+    );
+    // 클래스의 메소드를 비동기로 호출햇을 때 this를 잃어버리는 현상 => bind(this) 필요
   }
 
   disconnectedCallback() {
