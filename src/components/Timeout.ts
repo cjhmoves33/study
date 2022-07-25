@@ -1,4 +1,4 @@
-class CustomImagesTimeout extends HTMLElement {
+export default class CustomImagesTimeout extends HTMLElement {
   private wrapper = document.createElement("div");
 
   constructor() {
