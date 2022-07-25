@@ -1,4 +1,4 @@
-class CustomImages extends HTMLElement {
+class CustomImagesTimeout extends HTMLElement {
   private wrapper = document.createElement("div");
 
   constructor() {
@@ -95,7 +95,7 @@ class CustomImages extends HTMLElement {
 }
 
 function __createCustomElement__() {
-  customElements.define("custom-images", CustomImages);
+  customElements.define("custom-images", CustomImagesTimeout);
 }
 
 __createCustomElement__();
