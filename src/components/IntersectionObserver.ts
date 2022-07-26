@@ -1,4 +1,4 @@
-import LazyImageBuilder from "@/common/lazyImageBuilder";
+import LazyImageBuilder from "@/common/lazyImageBuilder.js";
 
 export default class CustomImagesIntersectionObserver extends HTMLElement {
   private wrapper = document.createElement("div");
@@ -7,23 +7,26 @@ export default class CustomImagesIntersectionObserver extends HTMLElement {
     super();
   }
 
-  private initImages() {
-    // const imageSize = this.getAttribute("image-size") as string;
-    // const length = Number(this.getAttribute("range"));
-    // Array.from({ length }, () => {
-    //   const lazyImage = document.createElement("img");
-    //   lazyImage.classList.add("lazy");
-    //   // lazyImage.dataset.src = "https://ik.imagekit.io/demo/default-image.jpg";
-    //   lazyImage.src = "https://ik.imagekit.io/demo/default-image.jpg";
-    //   lazyImage.style.width = imageSize;
-    //   lazyImage.style.height = "600px";
-    //   return lazyImage;
-    // }).forEach(img => {
-    //   this.wrapper.appendChild(img);
-    // });
+  // ** Getters **
+  private get range() {
+    return Number(this.getAttribute("range"));
   }
 
-  // life-cycle
+  private get width() {
+    return this.getAttribute("image-size") as string;
+  }
+
+  // ** Actions **
+  private initImages() {
+    new LazyImageBuilder(this.wrapper)
+      .range(this.range)
+      .width(this.width)
+      .height("600px")
+      .src("https://ik.imagekit.io/demo/default-image.jpg")
+      .build();
+  }
+
+  // ** Life Cycle **
   connectedCallback() {
     this.appendChild(this.wrapper);
     this.initImages();

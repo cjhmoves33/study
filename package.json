@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "start": "swc ./src -d src/js -w",
+    "start": "swc ./src -d src/js -w --extensions '.ts'",
     "transpile": "swc ./src -d src/js",
     "reset": "rm -rf src/js"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/cjhmoves33/lazy-loading.git"
   },
-  "author": "",
+  "author": "JaeHa-Choi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cjhmoves33/lazy-loading/issues"

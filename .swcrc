@@ -5,14 +5,15 @@
     },
     "minify": {
       "compress": false,
-      "mangle": {
-        "toplevel": false,
-        "keep_classnames": false,
-        "keep_fnames": false,
-        "keep_private_props": false,
-        "ie8": false,
-        "safari10": false
-      }
+      "mangle": false
+      // "mangle": {
+      //   "toplevel": false,
+      //   "keep_classnames": false,
+      //   "keep_fnames": false,
+      //   "keep_private_props": false,
+      //   "ie8": false,
+      //   "safari10": false
+      // }
     },
     "target": "es2022",
     "baseUrl": "src",
@@ -24,5 +25,5 @@
   "module": {
     "type": "es6"
   },
-  "minify": true
+  "minify": false
 }
