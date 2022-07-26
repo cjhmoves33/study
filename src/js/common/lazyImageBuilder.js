@@ -1,0 +1,1 @@
+export default class a{wrapper=document.createElement("div")}
