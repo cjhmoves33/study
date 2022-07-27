@@ -23,7 +23,7 @@ export default class LazyImageBuilder {
         return this;
     }
     build() {
-        this.createImages(this.__range__).map(this.setOptions).forEach((img)=>this.__wrapper__.appendChild(img));
+        this.createImages(this.__range__).map(this.setOptions).forEach(this.setImages);
     }
     createImages(length) {
         return Array.from({
@@ -35,5 +35,8 @@ export default class LazyImageBuilder {
         image.style.height = this.__height__;
         image.src = this.__src__;
         return image;
+    };
+    setImages = (img)=>{
+        this.__wrapper__.appendChild(img);
     };
 };

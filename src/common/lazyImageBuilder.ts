@@ -33,7 +33,7 @@ export default class LazyImageBuilder {
   public build() {
     this.createImages(this.__range__)
       .map(this.setOptions) // this.setOptions를 화살표 함수로 사용하면 .bind(this) 생략가능.
-      .forEach(img => this.__wrapper__.appendChild(img));
+      .forEach(this.setImages);
   }
 
   private createImages(length: number) {
@@ -45,5 +45,9 @@ export default class LazyImageBuilder {
     image.style.height = this.__height__;
     image.src = this.__src__;
     return image;
+  };
+
+  private setImages = (img: HTMLImageElement) => {
+    this.__wrapper__.appendChild(img);
   };
 }
