@@ -43,7 +43,7 @@ export default class LazyImageBuilder {
   private setOptions = (image: HTMLImageElement) => {
     image.style.width = this.__width__;
     image.style.height = this.__height__;
-    image.src = this.__src__;
+    image.dataset.src = this.__src__;
     return image;
   };
 

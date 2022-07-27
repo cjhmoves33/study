@@ -26,10 +26,32 @@ export default class CustomImagesIntersectionObserver extends HTMLElement {
       .build();
   }
 
+  private lazyLoad(
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) {
+    entries.forEach(entry => {
+      const lazyImage = entry.target as HTMLImageElement;
+
+      if (entry.isIntersecting) {
+        lazyImage.src = lazyImage.dataset.src as string;
+        observer.unobserve(lazyImage);
+      }
+    });
+  }
+
   // ** Life Cycle **
   connectedCallback() {
     this.appendChild(this.wrapper);
     this.initImages();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // https://developer.mozilla.org/ko/docs/Web/API/Intersection_Observer_API
+      const imageObserver = new IntersectionObserver(this.lazyLoad);
+
+      const lazyImages = this.wrapper.childNodes;
+      lazyImages.forEach(img => imageObserver.observe(img as HTMLImageElement));
+    });
   }
 }
 
