@@ -57,6 +57,7 @@ export default class CustomImagesIntersectionObserver extends HTMLElement {
 
 const __createCustomElement__ = () => {
   customElements.define("custom-images", CustomImagesIntersectionObserver);
+  console.timeLog();
 };
 
 __createCustomElement__();
