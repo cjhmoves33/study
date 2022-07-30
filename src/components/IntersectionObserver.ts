@@ -18,7 +18,7 @@ export default class CustomImagesIntersectionObserver extends HTMLElement {
 
   // ** Actions **
   private initImages() {
-    new LazyImageBuilder(this.wrapper)
+    new LazyImageBuilder(this.wrapper) // Comment: 빌더인데 왜 return을 안주게 만든거지..?
       .range(this.range)
       .width(this.width)
       .height("600px")
