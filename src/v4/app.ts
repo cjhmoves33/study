@@ -1,9 +1,9 @@
 // builder
-import { ValidationPlanBuilder } from '@/v5/validatorBuilderV4';
+import { ValidationPlanBuilder } from '@/v4/validatorBuilderV4';
 // modules
 import { getValidationRule, getValidationInputs } from '@/module/module';
 // hooks
-import { UseValidator } from '@/v5/hook';
+import { UseValidator } from '@/v4/hook';
 
 class App {
   private bindEvent() {
@@ -26,24 +26,27 @@ class App {
       .requireMessage(usernameRule.requireMessage)
       .maxLengthMessage(usernameRule.maxLengthMessage)
       .next()
+      .refs.inputRef(usernameRef)
+      .invalidValueMessageRef(usernameInvalidValueMessageRef)
+      .next()
       .build();
 
     // 4. 유효성검사 플랜에 맞는 검사기(hook) 제작
     const usernameValidator = new UseValidator(usernameValidationPlan);
 
     // 5. [input 입력시] 검사기로 유효성검사 및 Input에 유효한 값 입력.
-    // usernameRef.oninput = () => {
-    //   usernameValidator.validation();
-    // };
+    usernameRef.oninput = () => {
+      usernameValidator.validation();
+    };
 
     // 5. [form 제출시] 검사기로 값 여부 확인 및 포커싱(필수입력 값일 시)
-    // form.onsubmit = e => {
-    //   e.preventDefault();
-    //   if (!usernameValidator.hasValue) {
-    //     usernameValidator.alertHasNoRequiredValue();
-    //     usernameValidator.focus();
-    //   }
-    // };
+    form.onsubmit = e => {
+      e.preventDefault();
+      if (!usernameValidator.hasValue) {
+        usernameValidator.alertHasNoRequiredValue();
+        usernameValidator.focus();
+      }
+    };
   }
 
   private init() {

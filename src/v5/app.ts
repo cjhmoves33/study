@@ -1,15 +1,11 @@
 // builder
-import { ValidationPlanBuilder } from '@/v4/validatorBuilderV4';
+import { ValidationPlanBuilder } from '@/v5/validatorBuilderV5';
 // modules
 import { getValidationRule, getValidationInputs } from '@/module/module';
 // hooks
-import { UseValidator } from '@/v4/hook';
+import { UseValidator } from '@/v5/hook';
 
 class App {
-  // private ajaxCall() {
-  //   return;
-  // }
-
   private bindEvent() {
     const USER_NAME = 'username';
 
