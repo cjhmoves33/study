@@ -3,7 +3,7 @@ import ValidationPlanBuilder from '@/v5/validatorBuilderV5';
 // modules
 import { getValidationRule, getValidationInputs } from '@/module/module';
 // hooks
-// import { UseValidator } from '@/v5/hook';
+import { UseValidator } from '@/v5/hook';
 
 class App {
   private bindEvent() {
@@ -27,7 +27,7 @@ class App {
       .maxLengthMessage(usernameRule.maxLengthMessage);
 
     // 4. 유효성검사 플랜에 맞는 검사기(hook) 제작
-    // const usernameValidator = new UseValidator(usernameValidationPlan);
+    const usernameValidator = new UseValidator(usernameValidationPlan.plan);
 
     // 5. [input 입력시] 검사기로 유효성검사 및 Input에 유효한 값 입력.
     usernameRef.oninput = () => {

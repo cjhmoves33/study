@@ -3,7 +3,7 @@ import { Plan } from '@/v5/type';
 export class UseValidator {
   private readonly validationPlan: Plan;
 
-  private isInValid = false;
+  private isInvalid = false;
   private isLengthExceeded = false;
 
   constructor(validationPlan: Plan) {
@@ -53,7 +53,7 @@ export class UseValidator {
   // }
 
   private setIsValid(value: string) {
-    this.isInValid = !!value.match(this.pattern);
+    this.isInvalid = !!value.match(this.pattern);
   }
 
   private setIsMaxLengthExceeded(isExceeded: boolean) {
