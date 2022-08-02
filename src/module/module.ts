@@ -28,15 +28,25 @@ export const getValidationRule = (type: ValidationType) => {
   return validationMap[type];
 };
 
-export const getValidationInputs = (
-  type: ValidationType
-): [HTMLInputElement, HTMLSpanElement] => {
-  const inputRef = document.querySelector(
-    `input[type=text][id=${type}-input]`
-  ) as HTMLInputElement;
-  const invalidValueMessageRef = document.querySelector(
-    `span[id=${type}-invalid-value-message]`
-  ) as HTMLSpanElement;
+export const getValidationInputs = (type: ValidationType) => {
+  const inputRef = document.createElement('input');
+  inputRef.id = `${type}-input`;
+  inputRef.name = `${type}-input`;
+  const invalidValueMessageRef = document.createElement('span');
+  invalidValueMessageRef.id = `${type}-invalid-value-message`;
 
   return [inputRef, invalidValueMessageRef];
 };
+
+// export const getValidationInputs = (
+//   type: ValidationType
+// ): [HTMLInputElement, HTMLSpanElement] => {
+//   const inputRef = document.querySelector(
+//     `input[type=text][id=${type}-input]`
+//   ) as HTMLInputElement;
+//   const invalidValueMessageRef = document.querySelector(
+//     `span[id=${type}-invalid-value-message]`
+//   ) as HTMLSpanElement;
+
+//   return [inputRef, invalidValueMessageRef];
+// };
