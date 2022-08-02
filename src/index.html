@@ -17,13 +17,7 @@
     </form>
     <!-- <script type="module" src="js/v4/app.js"></script> -->
 
-    <input-component
-      pattern="/[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]/g"
-      maxLength="10"
-      invalidMessage="이름은 영대소, 숫자, 한글만 입력가능합니다."
-      requireMessage="이름은 최대 10글자입니다."
-      maxLengthMessage="이름 필수 입력임">
-    </input-component>
+    <input-component validationRule="username" ></input-component>
 
     <script type="module" src="js/v5/InputComponent.js"></script>
     <!-- <script src="js/v5/app.js"></script> -->
