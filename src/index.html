@@ -7,19 +7,19 @@
     <title>Form Validation</title>
   </head>
   <body>
-    <form>
+    <!-- <form>
       <div>
         <label for="username-input">이름</label>
         <input type="text" name="username-input" id="username-input" />
         <span id="username-invalid-value-message" style="color: tomato"></span>
       </div>
       <button>제출</button>
-    </form>
+    </form> -->
     <!-- <script type="module" src="js/v4/app.js"></script> -->
 
     <input-component validationRule="username" ></input-component>
     <template id="input-template">
-      <label for="username-input"></label>
+      <label for="username-input">이름</label>
       <input type="text" name="username-input" id="username-input">
       <span id="username-invalid-value-message"></span>
     </template>
