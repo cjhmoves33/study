@@ -8,17 +8,21 @@ export default class InputComponent extends HTMLElement {
   constructor() {
     super();
 
-    const template = document.getElementById(
-      'input-template'
-    ) as HTMLTemplateElement;
-    const templateContent = template.content;
+    const template = document.getElementById('username') as HTMLTemplateElement;
 
-    const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(templateContent.cloneNode(true));
+    this.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
     if (this.isConnected) {
+      const input = document.querySelector(
+        '#username-input'
+      ) as HTMLInputElement;
+
+      input.oninput = (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        console.log(target.value);
+      };
       // this.rule = getValidationRule(this.ruleOption);
     }
   }
