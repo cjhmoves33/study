@@ -13,16 +13,22 @@ export default class UsernameInput extends HTMLElement {
     this.appendChild(template.content.cloneNode(true));
   }
 
+  private handleInput = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+
+    target.value = target.value.replace(this.rule.pattern, '');
+  };
+
+  private throwInvalidPatternMessage = (ref: HTMLSpanElement) => {
+    ref.innerText = this.rule.invalidMessage;
+  };
+
   connectedCallback() {
     if (this.isConnected) {
-      const [input, invalidValueMessageRef] = getValidationInputs('username');
-      input.oninput = (e: Event) => {
-        const target = e.target as HTMLInputElement;
-
-        target.value = target.value.replace(this.rule.pattern, '');
-        invalidValueMessageRef.innerText = this.rule.invalidMessage;
-      };
-      // this.rule = getValidationRule(this.ruleOption);
+      const [input, invalidPatternMessageRef] = getValidationInputs('username');
+      input.oninput = this.handleInput;
+      input.oninput = () =>
+        this.throwInvalidPatternMessage(invalidPatternMessageRef);
     }
   }
 }
