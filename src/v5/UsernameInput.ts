@@ -19,7 +19,7 @@ export default class UsernameInput extends HTMLElement {
     target.value = target.value.replace(this.rule.pattern, '');
   };
 
-  private throwInvalidPatternMessage = (ref: HTMLSpanElement) => {
+  private observePatternValidity = (ref: HTMLSpanElement) => {
     ref.innerText = this.rule.invalidMessage;
   };
 
@@ -27,8 +27,7 @@ export default class UsernameInput extends HTMLElement {
     if (this.isConnected) {
       const [input, invalidPatternMessageRef] = getValidationInputs('username');
       input.oninput = this.handleInput;
-      input.oninput = () =>
-        this.throwInvalidPatternMessage(invalidPatternMessageRef);
+      input.oninput = () => this.observePatternValidity(invalidPatternMessageRef);
     }
   }
 }
