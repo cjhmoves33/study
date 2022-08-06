@@ -13,21 +13,31 @@ export default class UsernameInput extends HTMLElement {
     this.appendChild(template.content.cloneNode(true));
   }
 
-  private handleInput = (e: Event) => {
+  private handleInput = (e: Event, invalidPatternMessageRef: HTMLSpanElement) => {
     const target = e.target as HTMLInputElement;
+    const isValidPattern = !target.value.match(this.rule.pattern);
 
-    target.value = target.value.replace(this.rule.pattern, '');
+    if (isValidPattern) {
+      this.throwInvalidPatternMessage(invalidPatternMessageRef, '');
+    } else {
+      this.throwInvalidPatternMessage(invalidPatternMessageRef, this.rule.invalidMessage);
+    }
+
+    this.onInput(target, this.rule.pattern);
   };
 
-  private observePatternValidity = (ref: HTMLSpanElement) => {
-    ref.innerText = this.rule.invalidMessage;
+  private onInput = (target: HTMLInputElement, pattern: RegExp) => {
+    target.value = target.value.replace(pattern, '');
+  };
+
+  private throwInvalidPatternMessage = (ref: HTMLSpanElement, message: string) => {
+    ref.innerText = message;
   };
 
   connectedCallback() {
     if (this.isConnected) {
       const [input, invalidPatternMessageRef] = getValidationInputs('username');
-      input.oninput = this.handleInput;
-      input.oninput = () => this.observePatternValidity(invalidPatternMessageRef);
+      input.oninput = (e: Event) => this.handleInput(e, invalidPatternMessageRef);
     }
   }
 }
