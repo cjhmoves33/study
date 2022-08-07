@@ -38,6 +38,7 @@ export default class UsernameInput extends HTMLElement {
     if (this.isConnected) {
       const [input, invalidPatternMessageRef] = getValidationInputs('username');
       input.oninput = (e: Event) => this.handleInput(e, invalidPatternMessageRef);
+      input.onsubmit = () => alert('submit!');
     }
   }
 }
