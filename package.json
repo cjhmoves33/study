@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/cjhmoves33/versioning#readme",
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "release-please": "^13.21.0"
   }
 }

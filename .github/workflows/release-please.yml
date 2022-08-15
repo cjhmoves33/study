@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        run: echo 안녕, 세상!
         with:
           release-type: node
           package-name: release-please-action
