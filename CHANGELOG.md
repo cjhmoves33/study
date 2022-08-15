@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.4](https://github.com/cjhmoves33/versioning/compare/v2.0.3...v2.0.4) (2022-08-15)
+
+
+### Features
+
+* 하이 ([e674373](https://github.com/cjhmoves33/versioning/commit/e6743731f3cf30d72424fecc1f56e05659fc234f))
+* 하이 ([bba8e4d](https://github.com/cjhmoves33/versioning/commit/bba8e4df74c2c1418d30af5db25b3b6fe22804cc))
+
 ## [2.0.3](https://github.com/cjhmoves33/versioning/compare/v2.0.2...v2.0.3) (2022-08-15)
 
 
