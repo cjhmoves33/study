@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.4](https://github.com/cjhmoves33/versioning/compare/v2.2.3...v2.2.4) (2022-08-15)
+
+
+### Bug Fixes
+
+* 허숙키 ([e318f05](https://github.com/cjhmoves33/versioning/commit/e318f05b14c25a8aa2f187e2bdab0c56997a93bc))
+
 ## [2.2.3](https://github.com/cjhmoves33/versioning/compare/v2.2.2...v2.2.3) (2022-08-15)
 
 
