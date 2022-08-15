@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/cjhmoves33/versioning/compare/v2.2.0...v2.2.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* pr action ([bf2caa5](https://github.com/cjhmoves33/versioning/commit/bf2caa508b04f85a313f003335931a0707845e14))
+
 ## [2.2.0](https://github.com/cjhmoves33/versioning/compare/v2.1.0...v2.2.0) (2022-08-15)
 
 
