@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.2](https://github.com/cjhmoves33/versioning/compare/v2.0.1...v2.0.2) (2022-08-15)
+
+
+### Bug Fixes
+
+* workflow 2.0.2 ([ca2ba96](https://github.com/cjhmoves33/versioning/commit/ca2ba96631379e46cd836bffcb61cb59fad37de8))
+* workflow 제거2.0.2 ([807560a](https://github.com/cjhmoves33/versioning/commit/807560aebbaac9f993f6b276c4d55976f72b5951))
+* workflow 제거2.0.2 ([2d0d08e](https://github.com/cjhmoves33/versioning/commit/2d0d08e41526d0ac991534aa3eac369043435665))
+
 ## [2.0.1](https://github.com/cjhmoves33/versioning/compare/v2.0.0...v2.0.1) (2022-08-15)
 
 
