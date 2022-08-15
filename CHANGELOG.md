@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.5](https://github.com/cjhmoves33/versioning/compare/v2.0.4...v2.0.5) (2022-08-15)
+
+
+### foo
+
+* 2.0.5테스트중 ([4d9816c](https://github.com/cjhmoves33/versioning/commit/4d9816c726ec7a1f6b397c596338c83c5d0594bd))
+* 2.0.5테스트중 ([e031d2f](https://github.com/cjhmoves33/versioning/commit/e031d2f4b07daf9dcc8d8a02b308b0055324a49c))
+* foo ([3b3d070](https://github.com/cjhmoves33/versioning/commit/3b3d07084a9b6c2902a36437d3eb67fb25e9cd09))
+* foo ([d15161f](https://github.com/cjhmoves33/versioning/commit/d15161f5f9a5e649f054c890a05b10e3fe5a8982))
+* foo ([ec6c339](https://github.com/cjhmoves33/versioning/commit/ec6c339793e0c58f2c7d21d8812303b826f6c0c8))
+
 ## [2.0.4](https://github.com/cjhmoves33/versioning/compare/v2.0.3...v2.0.4) (2022-08-15)
 
 
