@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.3](https://github.com/cjhmoves33/versioning/compare/v2.2.2...v2.2.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* 테스트 ([bb4d566](https://github.com/cjhmoves33/versioning/commit/bb4d56620c3490c63de2c7f8c6b48e5abd8330ce))
+
 ## [2.2.2](https://github.com/cjhmoves33/versioning/compare/v2.2.1...v2.2.2) (2022-08-15)
 
 
