@@ -7,7 +7,7 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 안녕, 세상!
+      - run: echo 안녕, pre-release!
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
