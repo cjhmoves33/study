@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.6](https://github.com/cjhmoves33/versioning/compare/v2.0.5...v2.0.6) (2022-08-15)
+
+
+### foo
+
+* 됨? ([8803148](https://github.com/cjhmoves33/versioning/commit/880314833cf1187ca5b77742c8bbde4d96f74609))
+
 ## [2.0.5](https://github.com/cjhmoves33/versioning/compare/v2.0.4...v2.0.5) (2022-08-15)
 
 
