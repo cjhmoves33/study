@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/cjhmoves33/versioning/compare/v2.1.0...v2.2.0) (2022-08-15)
+
+
+### Features
+
+* 업뎃 ([5bd3724](https://github.com/cjhmoves33/versioning/commit/5bd3724afd6fd3173b0d51932dcf4f9877bb0a85))
+
 ## [2.1.0](https://github.com/cjhmoves33/versioning/compare/v2.0.6...v2.1.0) (2022-08-15)
 
 
