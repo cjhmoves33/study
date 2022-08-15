@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/cjhmoves33/versioning/compare/v2.3.0...v2.3.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* 음..? ([51b1fd7](https://github.com/cjhmoves33/versioning/commit/51b1fd7def9f1f12d6e6cb94842814a82f98f5a2))
+
 ## [2.3.0](https://github.com/cjhmoves33/versioning/compare/v2.2.5...v2.3.0) (2022-08-15)
 
 
