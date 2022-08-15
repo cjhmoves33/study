@@ -1,0 +1,23 @@
+{
+  "name": "versioning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjhmoves33/versioning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjhmoves33/versioning/issues"
+  },
+  "homepage": "https://github.com/cjhmoves33/versioning#readme",
+  "devDependencies": {
+    "release-please": "^13.21.0"
+  }
+}
