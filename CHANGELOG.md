@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.0](https://github.com/cjhmoves33/versioning/compare/v2.0.6...v2.1.0) (2022-08-15)
+
+
+### Features
+
+* feature 테스트2 ([6b54347](https://github.com/cjhmoves33/versioning/commit/6b54347790d6b326de9df8b3c59a9758fd0b228a))
+* feature테스트1 ([48aeb0c](https://github.com/cjhmoves33/versioning/commit/48aeb0c319f9f893cf232142a745d9c4002794e5))
+
+
+### Bug Fixes
+
+* fix테스트 2 ([72ba000](https://github.com/cjhmoves33/versioning/commit/72ba000c147a7bcbfb734b744faaa099c6becc49))
+* fix테스트1 ([726c12b](https://github.com/cjhmoves33/versioning/commit/726c12b831d29163bf2e4057adcffb31a0cf8177))
+
 ## [2.0.6](https://github.com/cjhmoves33/versioning/compare/v2.0.5...v2.0.6) (2022-08-15)
 
 
