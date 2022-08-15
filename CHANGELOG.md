@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/cjhmoves33/versioning/compare/v2.2.5...v2.3.0) (2022-08-15)
+
+
+### Features
+
+* test ([517abf0](https://github.com/cjhmoves33/versioning/commit/517abf0a4ef49a063158acabdbc3001e9260ff65))
+
 ## [2.2.5](https://github.com/cjhmoves33/versioning/compare/v2.2.4...v2.2.5) (2022-08-15)
 
 
