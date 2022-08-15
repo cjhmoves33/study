@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.3](https://github.com/cjhmoves33/versioning/compare/v2.0.2...v2.0.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* work 2.0.3 ([1ae3d6d](https://github.com/cjhmoves33/versioning/commit/1ae3d6d65e24d57c68bf86d989cc86061d04f41e))
+* work 2.0.3 ([fcb8151](https://github.com/cjhmoves33/versioning/commit/fcb81512c5327f7db29eb8d7d16eb2d7ba250672))
+* workflow 2.0.2 ([2b360b6](https://github.com/cjhmoves33/versioning/commit/2b360b68547cc8b50dd4db08125cbda018292ed1))
+
 ## [2.0.2](https://github.com/cjhmoves33/versioning/compare/v2.0.1...v2.0.2) (2022-08-15)
 
 
