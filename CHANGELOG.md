@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.5](https://github.com/cjhmoves33/versioning/compare/v2.2.4...v2.2.5) (2022-08-15)
+
+
+### Bug Fixes
+
+* 액션수정 ([dd0cb20](https://github.com/cjhmoves33/versioning/commit/dd0cb204f188601f6975c23751c5e5a8bd66821a))
+
 ## [2.2.4](https://github.com/cjhmoves33/versioning/compare/v2.2.3...v2.2.4) (2022-08-15)
 
 
