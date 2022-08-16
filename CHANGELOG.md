@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.0](https://github.com/cjhmoves33/versioning/compare/v3.0.0...v3.1.0) (2022-08-16)
+
+
+### Features
+
+* eslint ([0e2906f](https://github.com/cjhmoves33/versioning/commit/0e2906f532e924b5d3749a03f3f949bfb784e1a9))
+* lint 액션 추가 ([ded767e](https://github.com/cjhmoves33/versioning/commit/ded767ede69c8e8ccd1000d6bf68130c9850afcf))
+
 ## [3.0.0](https://github.com/cjhmoves33/versioning/compare/v2.4.0...v3.0.0) (2022-08-16)
 
 
