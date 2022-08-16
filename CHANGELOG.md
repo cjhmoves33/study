@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/cjhmoves33/versioning/compare/v2.3.1...v2.4.0) (2022-08-15)
+
+
+### Features
+
+* 마이너버전 ([1bdef97](https://github.com/cjhmoves33/versioning/commit/1bdef97c2e9fdbcb2c226192669f9b3ed07252e1))
+
 ## [2.3.1](https://github.com/cjhmoves33/versioning/compare/v2.3.0...v2.3.1) (2022-08-15)
 
 
