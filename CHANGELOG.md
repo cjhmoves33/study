@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.1](https://github.com/cjhmoves33/versioning/compare/v3.1.0...v3.1.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* pr 액션 테스트 patch버저닝 ([9953da5](https://github.com/cjhmoves33/versioning/commit/9953da53c6458ffaf291788e08531885902c922c))
+* 린트 수정 ([1c834df](https://github.com/cjhmoves33/versioning/commit/1c834dfad4e86924e086e560e9493d9f65d530a0))
+
 ## [3.1.0](https://github.com/cjhmoves33/versioning/compare/v3.0.0...v3.1.0) (2022-08-16)
 
 
