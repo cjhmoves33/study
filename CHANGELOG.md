@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/cjhmoves33/versioning/compare/v2.4.0...v3.0.0) (2022-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* vite
+* vite
+
+### Features
+
+* vite ([2e65d55](https://github.com/cjhmoves33/versioning/commit/2e65d55c441ff2cb8f9316ff6f92c758af0bbfc4))
+* vite ([b4fa32c](https://github.com/cjhmoves33/versioning/commit/b4fa32c5b4dee2fdfdd1f4f6db3363d3f31da07e))
+
 ## [2.4.0](https://github.com/cjhmoves33/versioning/compare/v2.3.1...v2.4.0) (2022-08-15)
 
 
