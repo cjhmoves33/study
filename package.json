@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "vite src",
+    "build": "vite build",
+    "lint": "eslint src/**/*.js"
   },
   "repository": {
     "type": "git",
