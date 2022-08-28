@@ -1,0 +1,41 @@
+{
+  "name": "lazy-loading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "swc ./src -d src/js -w --extensions '.ts'",
+    "transpile": "swc ./src -d src/js",
+    "reset": "rm -rf src/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjhmoves33/lazy-loading.git"
+  },
+  "author": "JaeHa-Choi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjhmoves33/lazy-loading/issues"
+  },
+  "homepage": "https://github.com/cjhmoves33/lazy-loading#readme",
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.210",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "chokidar": "^3.5.3",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  }
+}

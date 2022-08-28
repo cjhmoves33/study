@@ -1,0 +1,29 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "minify": {
+      "compress": false,
+      "mangle": false
+      // "mangle": {
+      //   "toplevel": false,
+      //   "keep_classnames": false,
+      //   "keep_fnames": false,
+      //   "keep_private_props": false,
+      //   "ie8": false,
+      //   "safari10": false
+      // }
+    },
+    "target": "es2022",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "exclude": ["src/js/"],
+  "module": {
+    "type": "es6"
+  },
+  "minify": false
+}

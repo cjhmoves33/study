@@ -1,0 +1,14 @@
+const { config } = require("@swc/core/spack");
+
+module.exports = config({
+  entry: {
+    comp: __dirname + "/src/components/CustomImages.ts",
+  },
+  output: {
+    path: __dirname + "/dist",
+  },
+  module: {},
+  target: "browser",
+  mode: "development",
+});
+
