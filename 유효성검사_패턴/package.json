@@ -1,0 +1,34 @@
+{
+  "name": "vanilla-input-validation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "npx babel --extensions '.ts' --out-dir src/js src/",
+    "lint": "eslint --ext '.ts' src/",
+    "reset": "rm -rf js/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "typescript": "^4.7.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.0",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-typescript": "^7.17.12",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "babel-plugin-module-extension-resolver": "^1.0.0-rc.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
+  }
+}

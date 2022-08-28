@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <!-- <form>
+      <div>
+        <label for="username-input">이름</label>
+        <input type="text" name="username-input" id="username-input" />
+        <span id="username-invalid-value-message" style="color: tomato"></span>
+      </div>
+      <button>제출</button>
+    </form> -->
+    <!-- <script type="module" src="js/v4/app.js"></script> -->
+
+    <input-component validationRule="username" />
+    <template id="username">
+      <label for="username-input">이름</label>
+      <input type="text" name="username-input" id="username-input" >
+      <span id="username-invalid-value-message"></span>
+    </template>
+
+    <script type="module" src="js/v5/UsernameInput.js"></script>
+    <script type="module" src="js/v5/Form.js"></script>
+    <!-- <script src="js/v5/app.js"></script> -->
+  </body>
+</html>
