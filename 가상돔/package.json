@@ -1,0 +1,17 @@
+{
+  "name": "virtual-dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "createElement.js",
+  "scripts": {
+    "start": "swc src -d dist -w",
+    "reset": "rm -rf dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.244",
+    "chokidar": "^3.5.3"
+  }
+}
