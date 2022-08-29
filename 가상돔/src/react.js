@@ -26,7 +26,6 @@ export const makeDOM = (VirtualDOM) => {
  * @returns 
  */
 export const diffingUpdate = (parent, prevNode, nextNode, parentIdx = 0) => {
-  console.log(parent);
   const isStringPrevNode = typeof prevNode === 'string';
   const isStringNextNode = typeof prevNode === 'string';
   
@@ -39,11 +38,7 @@ export const diffingUpdate = (parent, prevNode, nextNode, parentIdx = 0) => {
     )
   }
 
-  for (const [idx, node] of nextNode.children.entries()) {
-    console.log(node)
-    console.log(prevNode)
-    console.log(nextNode)
-    debugger
+  for (const [idx] of nextNode.children.entries()) {
     diffingUpdate(
       parent.childNodes[parentIdx],
       prevNode.children[idx],
