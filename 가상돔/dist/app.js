@@ -1,4 +1,4 @@
-import { createElement, diffingUpdate, renderDOM } from './react.js';
+import { createElement, diffingUpdate, makeDOM } from './react.js';
 const prevState = [
     {
         title: '장난감 - 1'
@@ -23,7 +23,7 @@ const ToyList = (state)=>{
 const prevNode = ToyList(prevState);
 const nextNode = ToyList(nextState);
 const __root__ = document.querySelector('#root');
-__root__.appendChild(renderDOM(prevNode));
+__root__.appendChild(makeDOM(prevNode));
 setTimeout(()=>{
     diffingUpdate(__root__, prevNode, nextNode);
 }, 1000);

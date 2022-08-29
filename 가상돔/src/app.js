@@ -1,6 +1,6 @@
 /* @jsx createElement */
 // 리액트의 createElement를 사용하지않고 jsx를 사용하기위해선 위와 같은 주석이 필요하다.
-import { createElement, diffingUpdate, renderDOM } from './react.js'
+import { createElement, diffingUpdate, makeDOM } from './react.js'
 
 const prevState = [
   { title: '장난감 - 1' },
@@ -28,7 +28,7 @@ const prevNode = ToyList(prevState);
 const nextNode = ToyList(nextState);
 
 const __root__ = document.querySelector('#root');
-__root__.appendChild(renderDOM(prevNode));
+__root__.appendChild(makeDOM(prevNode));
 
 setTimeout(() => {
   diffingUpdate(__root__, prevNode, nextNode);
