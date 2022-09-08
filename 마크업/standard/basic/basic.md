@@ -56,7 +56,7 @@
 <!-- 웹사이트를 제작할 때 어떤 프로그램을 사용했는지 표시해줌-->
 <meta name="generator" content="페이지를 생성한 소프트웨어의 식별자" />
 
-<!-- 문서에서 시작하는 요청의 HTTP Referer 헤더를 아래 표와 같이 통제한다. 출처: https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta/name#html_%EB%AA%85%EC%84%B8%EA%B0%80_%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94_%ED%91%9C%EC%A4%80_%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%9D%B4%EB%A6%84 -->
+<!-- 문서에서 시작하는 요청의 HTTP Referer 헤더를 아래 표와 같이 통제한다. -->
 <!-- HTTP Referer 헤더를 전송하지 않습니다. -->
 <meta name="referrer" content="no-referrer" />
 <!-- 문서의 출처를 전송합니다. -->
@@ -73,6 +73,19 @@
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <!-- 동일 출처와 교차 출처 요청 모두에 대해서 전체 URL을 전송합니다. -->
 <meta name="referrer" content="unsafe-URL	" />
+
+<!-- CSP -->
 ```
 
-- 참조: [html standard](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)
+- 참조
+
+  - [MDN - meta](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta/name#html_%EB%AA%85%EC%84%B8%EA%B0%80_%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94_%ED%91%9C%EC%A4%80_%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%9D%B4%EB%A6%84)
+  - [html standard](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)
+  - [MDN - Referer](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Referer)
+  - [MDN - Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy)
+
+- 참조(CSP 관련)
+  - [MDN - X-XSS-Protection](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-XSS-Protection)
+  - [html standard](https://html.spec.whatwg.org/multipage/semantics.html#attr-meta-http-equiv-content-security-policy)
+  - [MDN - csp](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy)
+  - [블로그](https://simjaejin.tistory.com/31)
