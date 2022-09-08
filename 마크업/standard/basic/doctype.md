@@ -1,3 +1,5 @@
+# DOCTYPE
+
 ```html
 <!DOCTYPE html>
 ```
@@ -13,3 +15,5 @@
 ```
 
 - 참조: [tcpschool](http://www.tcpschool.com/html-tags/doctype)
+
+# meta
