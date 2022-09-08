@@ -74,7 +74,9 @@
 <!-- 동일 출처와 교차 출처 요청 모두에 대해서 전체 URL을 전송합니다. -->
 <meta name="referrer" content="unsafe-URL	" />
 
-<!-- CSP -->
+<!-- CSP 단순 예시 -->
+<!-- csp에 대해서는 별도 조사가 필요 -->
+<meta http-equiv="Content-Security-Policy" content="default-src https:" />
 ```
 
 - 참조
