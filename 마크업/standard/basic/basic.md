@@ -107,7 +107,7 @@ nofollow:  크롤러에게 페이지 내의 링크로 연결된 웹 페이지로
   - [html standard](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)
   - [MDN - Referer](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Referer)
   - [MDN - Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy)
-  - [어센트 코리아](https://www.ascentkorea.com/meta-description-seo/)
+  - [어센트 코리아 - meta](https://www.ascentkorea.com/meta-description-seo/)
   - [EXIT - 백링크란?](https://marketingexit.com/%EB%B0%B1%EB%A7%81%ED%81%AC%EB%9E%80/)
 
 - 참조(CSP 관련)
