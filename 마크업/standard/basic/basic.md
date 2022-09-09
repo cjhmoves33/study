@@ -33,7 +33,10 @@
 -->
 <meta name="keyword" content="HTML, meta, tag, element, reference" />
 
-<!-- 웹 페이지에 대한 설명,  Firefox, Opera 등 여러 브라우저는 즐겨찾기 페이지의 기본 설명 값으로 description 메타데이터를 사용함 -->
+<!--
+웹 페이지에 대한 설명,  Firefox, Opera 등 여러 브라우저는 즐겨찾기 페이지의 기본 설명 값으로 description 메타데이터를 사용함
+description이 상위검색에 오르게해주는 주요요소는 아니지만 유저가 필요로한 정보를 잘 기재한다면 그것또한 유의미한 가치를 가진다.
+-->
 <meta name="description" content="구글엔진이 의외로 참고를 별로 안한다고 함" />
 
 <!-- 문서의 저자 -->
@@ -55,7 +58,24 @@
 
 <!-- 웹사이트를 제작할 때 어떤 프로그램을 사용했는지 표시해줌-->
 <meta name="generator" content="페이지를 생성한 소프트웨어의 식별자" />
+```
 
+```html
+<!-- robot -->
+<!--
+index:  크롤러에게 웹 페이지를 읽어가서 색인하도록 허락하는 값
+noindex:  크롤러에게 웹 페이지를 읽어가지 않도록하는 값 
+follow:  크롤러에게 페이지 내의 링크로 연결된 웹 페이지로 이동하는 것을 허락하는 값
+nofollow:  크롤러에게 페이지 내의 링크로 연결된 웹 페이지로 이동을 허락하지 않는 값
+ -->
+<meta name="robot" content="noindex,nofollow" />
+
+<!-- 한시적으로 사용될 페이지, 일부 유저에게만 노출될 페이지 등은 검색결과에 나오지않아도 되기도한다. 그럴때 noindex를 적용. 기본적으로 index가 적용되어있음.-->
+<!-- 검색엔진은 한 페이지 내 백링크 관계를 점검한다. 백링크러 연결된 페이지들의 평가에 영향을 주고싶지않다면 nofollow를 적용. -->
+<!-- 아래 참조의 "백링크란?"을 보면 백링크가 SEO에 큰 영향을 주는것을 알 수 있다. -->
+```
+
+```html
 <!-- 문서에서 시작하는 요청의 HTTP Referer 헤더를 아래 표와 같이 통제한다. -->
 <!-- HTTP Referer 헤더를 전송하지 않습니다. -->
 <meta name="referrer" content="no-referrer" />
@@ -73,7 +93,9 @@
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <!-- 동일 출처와 교차 출처 요청 모두에 대해서 전체 URL을 전송합니다. -->
 <meta name="referrer" content="unsafe-URL	" />
+```
 
+```html
 <!-- CSP 단순 예시 -->
 <!-- csp에 대해서는 별도 조사가 필요 -->
 <meta http-equiv="Content-Security-Policy" content="default-src https:" />
@@ -85,6 +107,8 @@
   - [html standard](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)
   - [MDN - Referer](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Referer)
   - [MDN - Referrer Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy)
+  - [어센트 코리아](https://www.ascentkorea.com/meta-description-seo/)
+  - [EXIT - 백링크란?](https://marketingexit.com/%EB%B0%B1%EB%A7%81%ED%81%AC%EB%9E%80/)
 
 - 참조(CSP 관련)
   - [MDN - X-XSS-Protection](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-XSS-Protection)
