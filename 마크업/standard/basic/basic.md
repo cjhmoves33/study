@@ -61,6 +61,15 @@ description이 상위검색에 오르게해주는 주요요소는 아니지만 �
 ```
 
 ```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+<!-- width 는 모바일 친화적이지않은 웹사이트를 좁읍 화면으로 볼때 더 나은 화면을 보이게 해준다. -->
+<!--  user-scalable=no 또는 initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 으로 화면 확대/축소 등을 하지 않게 설게가능함.-->
+```
+
+```html
 <!-- robot -->
 <!--
 index:  크롤러에게 웹 페이지를 읽어가서 색인하도록 허락하는 값
